@@ -81,101 +81,89 @@
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="72dp">
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="56dp"
+                    android:layout_height="56dp"
                     android:id="@+id/imageViewCMR"
-                    android:layout_gravity="left"
-                    android:src="@drawable/cmr"/>
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/circlecmr"/>
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="fill_parent"
                     android:textSize="23dp"
-                    android:textStyle="bold"
                     android:text="$ 30.000"
-                    android:id="@+id/textView22"
-                    android:gravity="center_vertical|right"
                     android:layout_weight="1"
-                    android:layout_marginRight="10dp"/>
-
+                    android:gravity="right|center"
+                    android:id="@+id/textView22"/>
             </LinearLayout>
 
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="72dp">
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="56dp"
+                    android:layout_height="56dp"
                     android:id="@+id/imageViewCMR2"
-                    android:layout_gravity="left"
-                    android:src="@drawable/bbva"/>
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/circlecmr"/>
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="fill_parent"
                     android:textSize="23dp"
-                    android:textStyle="bold"
                     android:text="$ 30.000"
                     android:id="@+id/textView222"
-                    android:gravity="center_vertical|right"
-                    android:layout_weight="1"
-                    android:layout_marginRight="10dp"/>
-
+                    android:gravity="right|center"
+                    android:layout_weight="1"/>
             </LinearLayout>
 
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="72dp">
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="56dp"
+                    android:layout_height="56dp"
                     android:id="@+id/imageViewCMR3"
-                    android:layout_gravity="left"
-                    android:src="@drawable/bci"/>
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/circlecmr"/>
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="fill_parent"
                     android:textSize="23dp"
-                    android:textStyle="bold"
                     android:text="$ 30.000"
                     android:id="@+id/textView2222"
-                    android:gravity="center_vertical|right"
-                    android:layout_weight="1"
-                    android:layout_marginRight="10dp"/>
-
+                    android:gravity="center|right"
+                    android:layout_weight="1" />
             </LinearLayout>
 
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="72dp">
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="56dp"
+                    android:layout_height="56dp"
                     android:id="@+id/imageViewCMR4"
-                    android:layout_gravity="left"
-                    android:src="@drawable/mc"/>
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/circlecmr"/>
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="fill_parent"
                     android:textSize="23dp"
-                    android:textStyle="bold"
                     android:text="$ 30.000"
                     android:id="@+id/textView22222"
-                    android:gravity="center_vertical|right"
-                    android:layout_weight="1"
-                    android:layout_marginRight="10dp"/>
-
+                    android:gravity="center|right"
+                    android:layout_weight="1"/>
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
