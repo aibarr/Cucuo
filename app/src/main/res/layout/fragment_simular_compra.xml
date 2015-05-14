@@ -2,38 +2,58 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
     android:orientation="vertical"
     tools:context="com.wakaru.cucuo.simularCompraFragment">
 
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="48dp"
+        android:background="#3F51B5"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Datos de la compra"
+            android:id="@+id/textView00"
+            android:textSize="20dp"
+            android:textColor="#FFFFFF"
+            android:layout_marginLeft="16dp"
+            />
+    </LinearLayout>
+
     <ScrollView
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent">
+        android:layout_height="fill_parent"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp">
 
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal">
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Ponle nombre a lo que vas a comrpar"
-                android:layout_marginTop="10dp"
-                />
-
+            android:layout_height="wrap_content">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="fill_parent"
+                android:layout_height="36dp"
+                android:text="Nombre del producto"
+                android:id="@+id/textView0"
+                android:textSize="18dp"
+                />
+
+            <EditText
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="¿Qué precio tiene lo que vas a comprar?"
+                android:inputType="text"
+                android:textSize="18dp"
+                />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="36dp"
+                android:text="Precio del producto"
                 android:id="@+id/textView"
-                android:layout_marginTop="10dp"
+                android:textSize="18dp"
                 />
 
             <EditText
@@ -41,22 +61,22 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/editText"
                 android:inputType="number"
+                android:textSize="18dp"
                 />
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_width="fill_parent"
+                android:layout_height="36dp"
+                android:textSize="18dp"
                 android:text="¿En cuantas cuotas lo comprarás?"
                 android:id="@+id/preguntaCuotas"
-                android:layout_marginTop="10dp"
                 />
 
             <SeekBar
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="fill_parent"
+                android:layout_height="36dp"
                 android:id="@+id/seekBar"
-                android:progress="20" />
+                android:progress="24" />
 
             <LinearLayout
                 android:orientation="horizontal"
@@ -68,7 +88,7 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/imageViewCMR"
                     android:layout_gravity="left"
-                    android:src="@drawable/cmr" />
+                    android:src="@drawable/cmr"/>
 
                 <TextView
                     android:layout_width="0dp"
@@ -157,82 +177,6 @@
                     android:layout_marginRight="10dp"/>
 
             </LinearLayout>
-
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/imageViewCMR84"
-                    android:layout_gravity="left"
-                    android:src="@drawable/mc"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="fill_parent"
-                    android:textSize="23dp"
-                    android:textStyle="bold"
-                    android:text="$ 30.000"
-                    android:id="@+id/textView222282"
-                    android:gravity="center_vertical|right"
-                    android:layout_weight="1"
-                    android:layout_marginRight="10dp"/>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/imageViewCMR467"
-                    android:layout_gravity="left"
-                    android:src="@drawable/mc"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="fill_parent"
-                    android:textSize="23dp"
-                    android:textStyle="bold"
-                    android:text="$ 30.000"
-                    android:id="@+id/textView2226722"
-                    android:gravity="center_vertical|right"
-                    android:layout_weight="1"
-                    android:layout_marginRight="10dp"/>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/imageViewCMR46"
-                    android:layout_gravity="left"
-                    android:src="@drawable/mc"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="fill_parent"
-                    android:textSize="23dp"
-                    android:textStyle="bold"
-                    android:text="$ 30.000"
-                    android:id="@+id/textView262222"
-                    android:gravity="center_vertical|right"
-                    android:layout_weight="1"
-                    android:layout_marginRight="10dp"/>
-
-            </LinearLayout>
-
         </LinearLayout>
     </ScrollView>
 </LinearLayout>
