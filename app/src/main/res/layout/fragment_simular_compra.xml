@@ -8,7 +8,7 @@
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="48dp"
-        android:background="#3F51B5"
+        android:background="#009688"
         android:gravity="center">
 
         <TextView
@@ -17,7 +17,7 @@
             android:text="Datos de la compra"
             android:id="@+id/textView00"
             android:textSize="20dp"
-            android:textColor="#FFFFFF"
+            android:textColor="#B3FFFFFF"
             android:layout_marginLeft="16dp"
             />
     </LinearLayout>
@@ -46,6 +46,7 @@
                 android:layout_height="wrap_content"
                 android:inputType="text"
                 android:textSize="18dp"
+                android:gravity="center_horizontal"
                 />
 
             <TextView
@@ -60,8 +61,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/editText"
-                android:inputType="number"
+                android:inputType="numberDecimal"
                 android:textSize="18dp"
+                android:gravity="center_horizontal"
                 />
 
             <TextView
@@ -121,7 +123,7 @@
                     android:layout_height="46dp"
                     android:id="@+id/imageViewCMR2"
                     android:layout_gravity="center_vertical"
-                    android:src="@drawable/circlecmr"/>
+                    android:src="@drawable/circlebci"/>
 
                 <TextView
                     android:layout_width="0dp"
@@ -138,7 +140,7 @@
                     android:layout_height="fill_parent"
                     android:textSize="24sp"
                     android:textStyle="bold"
-                    android:text="$ 30.000"
+                    android:text="$ 5.000"
                     android:id="@+id/textView222"
                     android:gravity="right|center"
                     android:layout_weight="0.4"/>
@@ -154,7 +156,7 @@
                     android:layout_height="46dp"
                     android:id="@+id/imageViewCMR3"
                     android:layout_gravity="center_vertical"
-                    android:src="@drawable/circlecmr"/>
+                    android:src="@drawable/circlemaster"/>
 
                 <TextView
                     android:layout_width="0dp"
@@ -171,7 +173,7 @@
                     android:layout_height="fill_parent"
                     android:textSize="24sp"
                     android:textStyle="bold"
-                    android:text="$ 30.000"
+                    android:text="$ 14.000"
                     android:id="@+id/textView2222"
                     android:gravity="center|right"
                     android:layout_weight="0.4" />
@@ -187,7 +189,7 @@
                     android:layout_height="46dp"
                     android:id="@+id/imageViewCMR4"
                     android:layout_gravity="center_vertical"
-                    android:src="@drawable/circlecmr"/>
+                    android:src="@drawable/circlebbva"/>
 
                 <TextView
                     android:layout_width="0dp"
@@ -204,7 +206,7 @@
                     android:layout_height="fill_parent"
                     android:textSize="24sp"
                     android:textStyle="bold"
-                    android:text="$ 30.000"
+                    android:text="$ 5.000"
                     android:id="@+id/textView22222"
                     android:gravity="center|right"
                     android:layout_weight="0.4"/>
@@ -237,7 +239,7 @@
                     android:layout_height="fill_parent"
                     android:textSize="24sp"
                     android:textStyle="bold"
-                    android:text="$ 30.000"
+                    android:text="$ 15.000"
                     android:id="@+id/textView222222"
                     android:gravity="center|right"
                     android:layout_weight="0.4"/>
@@ -270,7 +272,7 @@
                     android:layout_height="fill_parent"
                     android:textSize="24sp"
                     android:textStyle="bold"
-                    android:text="$ 30.000"
+                    android:text="$ 20.000"
                     android:id="@+id/textView222223"
                     android:gravity="center|right"
                     android:layout_weight="0.4"/>
