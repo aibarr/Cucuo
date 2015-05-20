@@ -81,21 +81,32 @@
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="72dp">
+                android:layout_height="56dp">
 
                 <ImageView
-                    android:layout_width="56dp"
-                    android:layout_height="56dp"
+                    android:layout_width="46dp"
+                    android:layout_height="46dp"
                     android:id="@+id/imageViewCMR"
-                    android:layout_gravity="center_vertical"
+                    android:layout_gravity="left|center_vertical"
                     android:src="@drawable/circlecmr"/>
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="fill_parent"
-                    android:textSize="23dp"
+                    android:textSize="14sp"
+                    android:text="Tarjeta CMR"
+                    android:id="@+id/nombreCMR"
+                    android:gravity="left|center_vertical"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="0.6"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="fill_parent"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
                     android:text="$ 30.000"
-                    android:layout_weight="1"
+                    android:layout_weight="0.4"
                     android:gravity="right|center"
                     android:id="@+id/textView22"/>
             </LinearLayout>
@@ -103,11 +114,11 @@
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="72dp">
+                android:layout_height="56dp">
 
                 <ImageView
-                    android:layout_width="56dp"
-                    android:layout_height="56dp"
+                    android:layout_width="46dp"
+                    android:layout_height="46dp"
                     android:id="@+id/imageViewCMR2"
                     android:layout_gravity="center_vertical"
                     android:src="@drawable/circlecmr"/>
@@ -115,21 +126,32 @@
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="fill_parent"
-                    android:textSize="23dp"
+                    android:textSize="14sp"
+                    android:text="Tarjeta BCI"
+                    android:id="@+id/nombreBCI"
+                    android:gravity="left|center_vertical"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="0.6"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="fill_parent"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
                     android:text="$ 30.000"
                     android:id="@+id/textView222"
                     android:gravity="right|center"
-                    android:layout_weight="1"/>
+                    android:layout_weight="0.4"/>
             </LinearLayout>
 
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="72dp">
+                android:layout_height="56dp">
 
                 <ImageView
-                    android:layout_width="56dp"
-                    android:layout_height="56dp"
+                    android:layout_width="46dp"
+                    android:layout_height="46dp"
                     android:id="@+id/imageViewCMR3"
                     android:layout_gravity="center_vertical"
                     android:src="@drawable/circlecmr"/>
@@ -137,21 +159,32 @@
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="fill_parent"
-                    android:textSize="23dp"
+                    android:textSize="14sp"
+                    android:text="Tarjeta M.C."
+                    android:id="@+id/nombreMC"
+                    android:gravity="left|center_vertical"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="0.6"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="fill_parent"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
                     android:text="$ 30.000"
                     android:id="@+id/textView2222"
                     android:gravity="center|right"
-                    android:layout_weight="1" />
+                    android:layout_weight="0.4" />
             </LinearLayout>
 
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="72dp">
+                android:layout_height="56dp">
 
                 <ImageView
-                    android:layout_width="56dp"
-                    android:layout_height="56dp"
+                    android:layout_width="46dp"
+                    android:layout_height="46dp"
                     android:id="@+id/imageViewCMR4"
                     android:layout_gravity="center_vertical"
                     android:src="@drawable/circlecmr"/>
@@ -159,11 +192,88 @@
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="fill_parent"
-                    android:textSize="23dp"
+                    android:textSize="14sp"
+                    android:text="Tarjeta Jumbo"
+                    android:id="@+id/nombreJumbo"
+                    android:gravity="left|center_vertical"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="0.6"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="fill_parent"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
                     android:text="$ 30.000"
                     android:id="@+id/textView22222"
                     android:gravity="center|right"
-                    android:layout_weight="1"/>
+                    android:layout_weight="0.4"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="56dp">
+
+                <ImageView
+                    android:layout_width="46dp"
+                    android:layout_height="46dp"
+                    android:id="@+id/imageViewCMR5"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/circlecmr"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="fill_parent"
+                    android:textSize="14sp"
+                    android:text="Tarjeta Jumbo2"
+                    android:id="@+id/nombreJumbo2"
+                    android:gravity="left|center_vertical"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="0.6"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="fill_parent"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:text="$ 30.000"
+                    android:id="@+id/textView222222"
+                    android:gravity="center|right"
+                    android:layout_weight="0.4"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="56dp">
+
+                <ImageView
+                    android:layout_width="46dp"
+                    android:layout_height="46dp"
+                    android:id="@+id/imageViewCMR6"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/circlecmr"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="fill_parent"
+                    android:textSize="14sp"
+                    android:text="Tarjeta Jumbo"
+                    android:id="@+id/nombreJumbo3"
+                    android:gravity="left|center_vertical"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="0.6"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="fill_parent"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:text="$ 30.000"
+                    android:id="@+id/textView222223"
+                    android:gravity="center|right"
+                    android:layout_weight="0.4"/>
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
