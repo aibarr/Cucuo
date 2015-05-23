@@ -8,274 +8,299 @@
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="48dp"
-        android:background="#009688"
-        android:gravity="center">
+        android:background="#BDBDBD">
 
         <TextView
+            android:id="@+id/textView00"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="Datos de la compra"
-            android:id="@+id/textView00"
-            android:textSize="20dp"
-            android:textColor="#B3FFFFFF"
+            android:layout_gravity="center_vertical"
             android:layout_marginLeft="16dp"
-            />
+            android:layout_marginRight="16dp"
+            android:text="Datos de la compra"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:textColor="#000000"/>
     </LinearLayout>
 
     <ScrollView
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp">
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="16dp">
 
         <LinearLayout
-            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="36dp"
-                android:text="Nombre del producto"
-                android:id="@+id/textView0"
-                android:textSize="18dp"
-                />
-
-            <EditText
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:inputType="text"
-                android:textSize="18dp"
-                android:gravity="center_horizontal"
-                />
-
-            <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="36dp"
-                android:text="Precio del producto"
-                android:id="@+id/textView"
-                android:textSize="18dp"
-                />
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/editText"
-                android:inputType="numberDecimal"
-                android:textSize="18dp"
-                android:gravity="center_horizontal"
-                />
-
-            <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="36dp"
-                android:textSize="18dp"
-                android:text="¿En cuantas cuotas lo comprarás?"
-                android:id="@+id/preguntaCuotas"
-                />
-
-            <SeekBar
-                android:layout_width="fill_parent"
-                android:layout_height="36dp"
-                android:id="@+id/seekBar"
-                android:progress="24" />
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
             <LinearLayout
-                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="72dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textView0"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Nombre del producto"
+                    android:textColor="#000000"
+                    android:textSize="18dp" />
+
+                <EditText
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:inputType="text"
+                    android:textSize="14dp"
+                    android:hint="Nombre"/>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="72dp"
+                android:layout_marginTop="8dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Precio del producto"
+                    android:textSize="18dp"
+                    android:textColor="#000000"/>
+
+                <EditText
+                    android:id="@+id/editText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:inputType="numberDecimal"
+                    android:textSize="14dp"
+                    android:hint="Precio"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="72dp"
+                android:layout_marginTop="8dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/preguntaCuotas"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="¿En cuantas cuotas lo comprarás?"
+                    android:textSize="18dp"
+                    android:textColor="#000000"/>
+
+                <SeekBar
+                    android:id="@+id/seekBar"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:progress="24" />
+
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="56dp">
+                android:layout_height="56dp"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal">
 
                 <ImageView
+                    android:id="@+id/imageViewCMR"
                     android:layout_width="46dp"
                     android:layout_height="46dp"
-                    android:id="@+id/imageViewCMR"
                     android:layout_gravity="left|center_vertical"
-                    android:src="@drawable/circlecmr"/>
+                    android:src="@drawable/circlecmr" />
 
                 <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="fill_parent"
-                    android:textSize="14sp"
-                    android:text="Tarjeta CMR"
                     android:id="@+id/nombreCMR"
-                    android:gravity="left|center_vertical"
-                    android:layout_marginLeft="10dp"
-                    android:layout_weight="0.6"/>
-
-                <TextView
                     android:layout_width="0dp"
                     android:layout_height="fill_parent"
-                    android:textSize="24sp"
-                    android:textStyle="bold"
-                    android:text="$ 30.000"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="0.6"
+                    android:gravity="left|center_vertical"
+                    android:text="Tarjeta CMR"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/textView22"
+                    android:layout_width="0dp"
+                    android:layout_height="fill_parent"
                     android:layout_weight="0.4"
                     android:gravity="right|center"
-                    android:id="@+id/textView22"/>
+                    android:text="$ 30.000"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
             </LinearLayout>
 
             <LinearLayout
-                android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="56dp">
+                android:layout_height="56dp"
+                android:orientation="horizontal">
 
                 <ImageView
-                    android:layout_width="46dp"
-                    android:layout_height="46dp"
                     android:id="@+id/imageViewCMR2"
+                    android:layout_width="46dp"
+                    android:layout_height="46dp"
                     android:layout_gravity="center_vertical"
-                    android:src="@drawable/circlebci"/>
+                    android:src="@drawable/circlebci" />
 
                 <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="fill_parent"
-                    android:textSize="14sp"
-                    android:text="Tarjeta BCI"
                     android:id="@+id/nombreBCI"
-                    android:gravity="left|center_vertical"
-                    android:layout_marginLeft="10dp"
-                    android:layout_weight="0.6"/>
-
-                <TextView
                     android:layout_width="0dp"
                     android:layout_height="fill_parent"
-                    android:textSize="24sp"
-                    android:textStyle="bold"
-                    android:text="$ 5.000"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="0.6"
+                    android:gravity="left|center_vertical"
+                    android:text="Tarjeta BCI"
+                    android:textSize="14sp" />
+
+                <TextView
                     android:id="@+id/textView222"
+                    android:layout_width="0dp"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="0.4"
                     android:gravity="right|center"
-                    android:layout_weight="0.4"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="56dp">
-
-                <ImageView
-                    android:layout_width="46dp"
-                    android:layout_height="46dp"
-                    android:id="@+id/imageViewCMR3"
-                    android:layout_gravity="center_vertical"
-                    android:src="@drawable/circlemaster"/>
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="fill_parent"
-                    android:textSize="14sp"
-                    android:text="Tarjeta M.C."
-                    android:id="@+id/nombreMC"
-                    android:gravity="left|center_vertical"
-                    android:layout_marginLeft="10dp"
-                    android:layout_weight="0.6"/>
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="fill_parent"
-                    android:textSize="24sp"
-                    android:textStyle="bold"
-                    android:text="$ 14.000"
-                    android:id="@+id/textView2222"
-                    android:gravity="center|right"
-                    android:layout_weight="0.4" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="56dp">
-
-                <ImageView
-                    android:layout_width="46dp"
-                    android:layout_height="46dp"
-                    android:id="@+id/imageViewCMR4"
-                    android:layout_gravity="center_vertical"
-                    android:src="@drawable/circlebbva"/>
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="fill_parent"
-                    android:textSize="14sp"
-                    android:text="Tarjeta Jumbo"
-                    android:id="@+id/nombreJumbo"
-                    android:gravity="left|center_vertical"
-                    android:layout_marginLeft="10dp"
-                    android:layout_weight="0.6"/>
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="fill_parent"
-                    android:textSize="24sp"
-                    android:textStyle="bold"
                     android:text="$ 5.000"
-                    android:id="@+id/textView22222"
-                    android:gravity="center|right"
-                    android:layout_weight="0.4"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="56dp">
-
-                <ImageView
-                    android:layout_width="46dp"
-                    android:layout_height="46dp"
-                    android:id="@+id/imageViewCMR5"
-                    android:layout_gravity="center_vertical"
-                    android:src="@drawable/circlecmr"/>
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="fill_parent"
-                    android:textSize="14sp"
-                    android:text="Tarjeta Jumbo2"
-                    android:id="@+id/nombreJumbo2"
-                    android:gravity="left|center_vertical"
-                    android:layout_marginLeft="10dp"
-                    android:layout_weight="0.6"/>
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="fill_parent"
                     android:textSize="24sp"
-                    android:textStyle="bold"
-                    android:text="$ 15.000"
-                    android:id="@+id/textView222222"
-                    android:gravity="center|right"
-                    android:layout_weight="0.4"/>
+                    android:textStyle="bold" />
             </LinearLayout>
 
             <LinearLayout
-                android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="56dp">
+                android:layout_height="56dp"
+                android:orientation="horizontal">
 
                 <ImageView
+                    android:id="@+id/imageViewCMR3"
                     android:layout_width="46dp"
                     android:layout_height="46dp"
-                    android:id="@+id/imageViewCMR6"
                     android:layout_gravity="center_vertical"
-                    android:src="@drawable/circlecmr"/>
+                    android:src="@drawable/circlemaster" />
 
                 <TextView
+                    android:id="@+id/nombreMC"
                     android:layout_width="0dp"
                     android:layout_height="fill_parent"
-                    android:textSize="14sp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="0.6"
+                    android:gravity="left|center_vertical"
+                    android:text="Tarjeta M.C."
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/textView2222"
+                    android:layout_width="0dp"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="0.4"
+                    android:gravity="center|right"
+                    android:text="$ 14.000"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/imageViewCMR4"
+                    android:layout_width="46dp"
+                    android:layout_height="46dp"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/circlebbva" />
+
+                <TextView
+                    android:id="@+id/nombreJumbo"
+                    android:layout_width="0dp"
+                    android:layout_height="fill_parent"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="0.6"
+                    android:gravity="left|center_vertical"
                     android:text="Tarjeta Jumbo"
-                    android:id="@+id/nombreJumbo3"
-                    android:gravity="left|center_vertical"
-                    android:layout_marginLeft="10dp"
-                    android:layout_weight="0.6"/>
+                    android:textSize="14sp" />
 
                 <TextView
+                    android:id="@+id/textView22222"
                     android:layout_width="0dp"
                     android:layout_height="fill_parent"
-                    android:textSize="24sp"
-                    android:textStyle="bold"
-                    android:text="$ 20.000"
-                    android:id="@+id/textView222223"
+                    android:layout_weight="0.4"
                     android:gravity="center|right"
-                    android:layout_weight="0.4"/>
+                    android:text="$ 5.000"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/imageViewCMR5"
+                    android:layout_width="46dp"
+                    android:layout_height="46dp"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/circlecmr" />
+
+                <TextView
+                    android:id="@+id/nombreJumbo2"
+                    android:layout_width="0dp"
+                    android:layout_height="fill_parent"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="0.6"
+                    android:gravity="left|center_vertical"
+                    android:text="Tarjeta Jumbo2"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/textView222222"
+                    android:layout_width="0dp"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="0.4"
+                    android:gravity="center|right"
+                    android:text="$ 15.000"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/imageViewCMR6"
+                    android:layout_width="46dp"
+                    android:layout_height="46dp"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/circlecmr" />
+
+                <TextView
+                    android:id="@+id/nombreJumbo3"
+                    android:layout_width="0dp"
+                    android:layout_height="fill_parent"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="0.6"
+                    android:gravity="left|center_vertical"
+                    android:text="Tarjeta Jumbo"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/textView222223"
+                    android:layout_width="0dp"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="0.4"
+                    android:gravity="center|right"
+                    android:text="$ 20.000"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
