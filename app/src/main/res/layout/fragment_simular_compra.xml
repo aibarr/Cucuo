@@ -18,9 +18,9 @@
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             android:text="Datos de la compra"
+            android:textColor="#000000"
             android:textSize="20dp"
-            android:textStyle="bold"
-            android:textColor="#000000"/>
+            android:textStyle="bold" />
     </LinearLayout>
 
     <ScrollView
@@ -49,12 +49,13 @@
                     android:textSize="18dp" />
 
                 <EditText
+                    android:id="@+id/IdNombreProducto"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
+                    android:hint="Nombre"
                     android:inputType="text"
-                    android:textSize="14dp"
-                    android:hint="Nombre"/>
+                    android:textSize="14dp" />
             </LinearLayout>
 
 
@@ -69,17 +70,17 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:text="Precio del producto"
-                    android:textSize="18dp"
-                    android:textColor="#000000"/>
+                    android:textColor="#000000"
+                    android:textSize="18dp" />
 
                 <EditText
                     android:id="@+id/editText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
+                    android:hint="Precio"
                     android:inputType="numberDecimal"
-                    android:textSize="14dp"
-                    android:hint="Precio"/>
+                    android:textSize="14dp" />
             </LinearLayout>
 
             <LinearLayout
@@ -93,8 +94,8 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:text="¿En cuantas cuotas lo comprarás?"
-                    android:textSize="18dp"
-                    android:textColor="#000000"/>
+                    android:textColor="#000000"
+                    android:textSize="18dp" />
 
                 <SeekBar
                     android:id="@+id/seekBar"
