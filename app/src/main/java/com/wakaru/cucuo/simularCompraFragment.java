@@ -6,7 +6,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.SeekBar;
 import android.widget.SimpleAdapter;
+import android.widget.Toast;
 
 
 /**
@@ -16,6 +18,8 @@ public class simularCompraFragment extends Fragment {
 
     private SimpleAdapter mSchedule;
     private EditText nombreProducto;
+    private EditText cuotas;
+    private SeekBar barraCuotas;
 
     public simularCompraFragment() {
     }
@@ -23,13 +27,42 @@ public class simularCompraFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
 
         View root2 = inflater.inflate(R.layout.fragment_simular_compra, container, false);
 
         nombreProducto = (EditText) root2.findViewById(R.id.IdNombreProducto);
 
+
+        cuotas = (EditText) root2.findViewById(R.id.editText2);
+        barraCuotas = (SeekBar) root2.findViewById(R.id.seekBar);
+        barraCuotas.setMax(48);
+
+
+        cuotas.setText(barraCuotas.getProgress() + "/" + barraCuotas.getMax());
+
+        barraCuotas.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            int numeroBarra;
+
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                numeroBarra = progress;
+                cuotas.setText(progress + "/" + barraCuotas.getMax());
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                cuotas.setText(numeroBarra + "/" + barraCuotas.getMax());
+                Toast.makeText(getActivity(), "Cuotas cambiadas", Toast.LENGTH_SHORT).show();
+            }
+        });
+
         return root2;
     }
+
+
 }
