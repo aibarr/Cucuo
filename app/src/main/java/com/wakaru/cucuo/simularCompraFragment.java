@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.SeekBar;
 import android.widget.SimpleAdapter;
-import android.widget.Toast;
 
 
 /**
@@ -41,6 +40,9 @@ public class simularCompraFragment extends Fragment {
 
         cuotas.setText(barraCuotas.getProgress() + "/" + barraCuotas.getMax());
 
+        /**
+         * Actualiza el valor de las cuotas, de acuerdo al valor de la barra deslizante
+         */
         barraCuotas.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             int numeroBarra;
 
@@ -57,12 +59,9 @@ public class simularCompraFragment extends Fragment {
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
                 cuotas.setText(numeroBarra + "/" + barraCuotas.getMax());
-                Toast.makeText(getActivity(), "Cuotas cambiadas", Toast.LENGTH_SHORT).show();
             }
         });
 
         return root2;
     }
-
-
 }

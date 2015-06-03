@@ -7,13 +7,14 @@
     tools:context=".PrincipalFragment">
 
     <LinearLayout
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:background="#BDBDBD">
+        android:background="#BDBDBD"
+        android:orientation="horizontal">
 
         <TextView
             android:id="@+id/textView00"
-            android:layout_width="fill_parent"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="16dp"
@@ -25,7 +26,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="72dp"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
@@ -34,7 +35,7 @@
 
         <TextView
             android:id="@+id/tituloSaldo"
-            android:layout_width="fill_parent"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="left"
             android:text="Tu Saldo disponible para compras es:"
@@ -42,17 +43,16 @@
             android:textSize="18dp" />
 
         <TextView
-            android:layout_width="fill_parent"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="30.000"
+            android:text="$ 0"
             android:textColor="#757575"
             android:textSize="18dp" />
-
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="72dp"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
@@ -60,7 +60,7 @@
 
         <TextView
             android:id="@+id/showLimit"
-            android:layout_width="fill_parent"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="left"
             android:text="Tu limite mensual de compras es:"
@@ -69,7 +69,7 @@
 
         <EditText
             android:id="@+id/saldoMensual"
-            android:layout_width="fill_parent"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:hint="Ingrese Saldo"
@@ -79,25 +79,24 @@
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="72dp"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
-        android:gravity="left"
-        android:orientation="vertical">
+        android:layout_marginTop="8dp"
+        android:orientation="vertical"
+        android:gravity="center_vertical">
 
         <Button
             android:id="@+id/simulCompra"
-            style="?android:attr/action"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="16dp"
+            android:gravity="center"
+            android:layout_gravity="center_horizontal"
             android:background="#4CAF50"
-            android:text="Simular compra"
-            android:textAllCaps="true"
+            android:text="Simular Compra"
+            android:textAllCaps="false"
             android:textColor="#FFFFFF"
             android:textSize="24dp" />
-
     </LinearLayout>
 </LinearLayout>

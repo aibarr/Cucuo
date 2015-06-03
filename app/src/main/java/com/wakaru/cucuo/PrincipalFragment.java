@@ -32,7 +32,7 @@ public class PrincipalFragment extends Fragment {
 
         SharedPreferences settings = this.getActivity().getSharedPreferences(archivo, 0);
         String texto = settings.getString("saldoMensual", null);
-        saldoMensual.setText(texto);
+        saldoMensual.setText("$ " + texto);
 
         simulCompra.setOnClickListener(new Button.OnClickListener() {
 
@@ -45,6 +45,9 @@ public class PrincipalFragment extends Fragment {
         return root;
     }
 
+    /**
+     * Guarda el valor del saldo mensual disponible haciendo uso de Shared Preferences
+     */
     @Override
     public void onStop() {
         super.onStop();
