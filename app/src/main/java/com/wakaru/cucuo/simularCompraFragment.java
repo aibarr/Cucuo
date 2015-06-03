@@ -66,15 +66,15 @@ public class simularCompraFragment extends Fragment {
             public void onStopTrackingTouch(SeekBar seekBar) {
                 cuotas.setText(numeroBarra + "/" + barraCuotas.getMax());
                 double valorCuota = metodoFrances(precioProducto, 0.04, numeroBarra);
-                tarjeta1.setText(new DecimalFormat("#.##").format(valorCuota));
+                tarjeta1.setText(new DecimalFormat("#").format(valorCuota));
                 valorCuota = metodoFrances(precioProducto, 0.13, numeroBarra);
-                tarjeta2.setText(new DecimalFormat("#.##").format(valorCuota));
+                tarjeta2.setText(new DecimalFormat("#").format(valorCuota));
                 valorCuota = metodoFrances(precioProducto, 0.09, numeroBarra);
-                tarjeta3.setText(new DecimalFormat("#.##").format(valorCuota));
+                tarjeta3.setText(new DecimalFormat("#").format(valorCuota));
                 valorCuota = metodoFrances(precioProducto, 0.20, numeroBarra);
-                tarjeta4.setText(new DecimalFormat("#.##").format(valorCuota));
+                tarjeta4.setText(new DecimalFormat("#").format(valorCuota));
                 valorCuota = metodoFrances(precioProducto, 0.15, numeroBarra);
-                tarjeta5.setText(new DecimalFormat("#.##").format(valorCuota));
+                tarjeta5.setText(new DecimalFormat("#").format(valorCuota));
             }
         });
 
@@ -87,15 +87,15 @@ public class simularCompraFragment extends Fragment {
                         Toast.makeText(getActivity(), "Precio invalido", Toast.LENGTH_SHORT).show();
 
                         double valorCuota = 0;
-                        tarjeta1.setText(new DecimalFormat("#.##").format(valorCuota));
+                        tarjeta1.setText(new DecimalFormat("#").format(valorCuota));
                         valorCuota = metodoFrances(precioProducto, 0.13, barraCuotas.getProgress());
-                        tarjeta2.setText(new DecimalFormat("#.##").format(valorCuota));
+                        tarjeta2.setText(new DecimalFormat("#").format(valorCuota));
                         valorCuota = metodoFrances(precioProducto, 0.09, barraCuotas.getProgress());
-                        tarjeta3.setText(new DecimalFormat("#.##").format(valorCuota));
+                        tarjeta3.setText(new DecimalFormat("#").format(valorCuota));
                         valorCuota = metodoFrances(precioProducto, 0.20, barraCuotas.getProgress());
-                        tarjeta4.setText(new DecimalFormat("#.##").format(valorCuota));
+                        tarjeta4.setText(new DecimalFormat("#").format(valorCuota));
                         valorCuota = metodoFrances(precioProducto, 0.15, barraCuotas.getProgress());
-                        tarjeta5.setText(new DecimalFormat("#.##").format(valorCuota));
+                        tarjeta5.setText(new DecimalFormat("#").format(valorCuota));
 
                         return false;
 
@@ -104,15 +104,15 @@ public class simularCompraFragment extends Fragment {
 
                         cuotas.setText(barraCuotas.getProgress() + "/" + barraCuotas.getMax());
                         double valorCuota = metodoFrances(precioProducto, 0.04, barraCuotas.getProgress());
-                        tarjeta1.setText(new DecimalFormat("#.##").format(valorCuota));
+                        tarjeta1.setText(new DecimalFormat("#").format(valorCuota));
                         valorCuota = metodoFrances(precioProducto, 0.13, barraCuotas.getProgress());
-                        tarjeta2.setText(new DecimalFormat("#.##").format(valorCuota));
+                        tarjeta2.setText(new DecimalFormat("#").format(valorCuota));
                         valorCuota = metodoFrances(precioProducto, 0.09, barraCuotas.getProgress());
-                        tarjeta3.setText(new DecimalFormat("#.##").format(valorCuota));
+                        tarjeta3.setText(new DecimalFormat("#").format(valorCuota));
                         valorCuota = metodoFrances(precioProducto, 0.20, barraCuotas.getProgress());
-                        tarjeta4.setText(new DecimalFormat("#.##").format(valorCuota));
+                        tarjeta4.setText(new DecimalFormat("#").format(valorCuota));
                         valorCuota = metodoFrances(precioProducto, 0.15, barraCuotas.getProgress());
-                        tarjeta5.setText(new DecimalFormat("#.##").format(valorCuota));
+                        tarjeta5.setText(new DecimalFormat("#").format(valorCuota));
 
                         return true;
                     }
