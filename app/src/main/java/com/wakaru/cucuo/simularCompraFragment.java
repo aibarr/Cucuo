@@ -85,7 +85,20 @@ public class simularCompraFragment extends Fragment {
                 if ((event.getAction() == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER)) {
                     if (precioProducto.getText().toString().equals("")) {
                         Toast.makeText(getActivity(), "Precio invalido", Toast.LENGTH_SHORT).show();
+
+                        double valorCuota = 0;
+                        tarjeta1.setText(new DecimalFormat("#.##").format(valorCuota));
+                        valorCuota = metodoFrances(precioProducto, 0.13, barraCuotas.getProgress());
+                        tarjeta2.setText(new DecimalFormat("#.##").format(valorCuota));
+                        valorCuota = metodoFrances(precioProducto, 0.09, barraCuotas.getProgress());
+                        tarjeta3.setText(new DecimalFormat("#.##").format(valorCuota));
+                        valorCuota = metodoFrances(precioProducto, 0.20, barraCuotas.getProgress());
+                        tarjeta4.setText(new DecimalFormat("#.##").format(valorCuota));
+                        valorCuota = metodoFrances(precioProducto, 0.15, barraCuotas.getProgress());
+                        tarjeta5.setText(new DecimalFormat("#.##").format(valorCuota));
+
                         return false;
+
                     } else {
                         Toast.makeText(getActivity(), "Precio actualizado", Toast.LENGTH_SHORT).show();
 
