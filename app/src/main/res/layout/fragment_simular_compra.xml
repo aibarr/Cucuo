@@ -139,7 +139,7 @@
                     android:layout_gravity="center_vertical"
                     android:layout_weight="0.4"
                     android:gravity="center_horizontal"
-                    android:text="Valor cuota"
+                    android:text="$ Valor cuota"
                     android:textColor="#000000"
                     android:textSize="18dp"
                     android:textStyle="bold"/>
