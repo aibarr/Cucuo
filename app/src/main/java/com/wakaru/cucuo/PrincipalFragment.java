@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 
 /**
@@ -18,6 +19,7 @@ public class PrincipalFragment extends Fragment {
 
     Button simulCompra;
     EditText saldoMensual;
+    TextView saldoDisponible;
     public static final String archivo = "MyPrefsFile";
 
     public PrincipalFragment() {
@@ -29,10 +31,20 @@ public class PrincipalFragment extends Fragment {
 
         simulCompra = (Button) root.findViewById(R.id.simulCompra);
         saldoMensual = (EditText) root.findViewById(R.id.saldoMensual);
+        saldoDisponible = (TextView) root.findViewById(R.id.textViewSaldoDisponible);
+
 
         SharedPreferences settings = this.getActivity().getSharedPreferences(archivo, 0);
-        String texto = settings.getString("saldoMensual", null);
-        saldoMensual.setText("$ " + texto);
+        String textoSaldoMensual = settings.getString("saldoMensual", null);
+        String textoSaldoDisponible = settings.getString("saldoDisponible", null);
+
+        if (textoSaldoMensual == null) {
+            saldoMensual.setText("$ " + 0);
+            saldoDisponible.setText("$ " + 0);
+        } else {
+            saldoMensual.setText("$ " + textoSaldoMensual);
+            saldoDisponible.setText("$ " + textoSaldoDisponible);
+        }
 
         simulCompra.setOnClickListener(new Button.OnClickListener() {
 
@@ -55,6 +67,7 @@ public class PrincipalFragment extends Fragment {
         SharedPreferences settings = this.getActivity().getSharedPreferences(archivo, 0);
         SharedPreferences.Editor editor = settings.edit();
         editor.putString("saldoMensual", saldoMensual.getText().toString());
+        editor.putString("saldoDisponible", saldoDisponible.getText().toString());
 
         editor.commit();
     }
