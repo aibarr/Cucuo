@@ -61,6 +61,8 @@ public class PrincipalFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent aSimular = new Intent(getActivity(), simularCompra.class);
+                aSimular.putExtra("saldoDisponibleKey", saldoDisponible.getText().toString());
+
                 startActivity(aSimular);
             }
         });

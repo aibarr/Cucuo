@@ -46,6 +46,8 @@ public class simularCompraFragment extends Fragment {
 
         cuotas.setText(barraCuotas.getProgress() + "/" + barraCuotas.getMax());
 
+        final String saldoDisponible = getActivity().getIntent().getExtras().getString("saldoDisponibleKey");
+
         /**
          * Actualiza el valor de las cuotas, de acuerdo al valor de la barra deslizante
          */
@@ -67,14 +69,19 @@ public class simularCompraFragment extends Fragment {
                 cuotas.setText(numeroBarra + "/" + barraCuotas.getMax());
                 double valorCuota = metodoFrances(precioProducto, 0.04, numeroBarra);
                 tarjeta1.setText(new DecimalFormat("#").format(valorCuota));
+                tarjeta1.setTextColor(Color.parseColor(verificarSaldo(saldoDisponible, valorCuota)));
                 valorCuota = metodoFrances(precioProducto, 0.13, numeroBarra);
                 tarjeta2.setText(new DecimalFormat("#").format(valorCuota));
+                tarjeta2.setTextColor(Color.parseColor(verificarSaldo(saldoDisponible, valorCuota)));
                 valorCuota = metodoFrances(precioProducto, 0.09, numeroBarra);
                 tarjeta3.setText(new DecimalFormat("#").format(valorCuota));
+                tarjeta3.setTextColor(Color.parseColor(verificarSaldo(saldoDisponible, valorCuota)));
                 valorCuota = metodoFrances(precioProducto, 0.20, numeroBarra);
                 tarjeta4.setText(new DecimalFormat("#").format(valorCuota));
+                tarjeta4.setTextColor(Color.parseColor(verificarSaldo(saldoDisponible, valorCuota)));
                 valorCuota = metodoFrances(precioProducto, 0.15, numeroBarra);
                 tarjeta5.setText(new DecimalFormat("#").format(valorCuota));
+                tarjeta5.setTextColor(Color.parseColor(verificarSaldo(saldoDisponible, valorCuota)));
             }
         });
 
@@ -148,6 +155,15 @@ public class simularCompraFragment extends Fragment {
                 precioProducto.setHintTextColor(Color.parseColor("#000000"));
                 return valorCuota;
             }
+        }
+    }
+
+    public String verificarSaldo(String saldoDisponibleString, double valorCuotaDouble){
+        if(Integer.parseInt(saldoDisponibleString) < valorCuotaDouble){
+            return "#F44336";
+        }
+        else{
+            return "#000000";
         }
     }
 }

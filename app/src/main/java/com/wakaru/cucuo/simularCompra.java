@@ -8,14 +8,16 @@ import android.view.MenuItem;
 
 public class simularCompra extends ActionBarActivity {
 
+    String saldoDisponible;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_simular_compra);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-    }
 
+        saldoDisponible = getIntent().getExtras().getString("saldoDisponibleKey");
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
