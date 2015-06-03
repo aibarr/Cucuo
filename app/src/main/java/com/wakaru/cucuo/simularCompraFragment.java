@@ -67,18 +67,23 @@ public class simularCompraFragment extends Fragment {
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
                 cuotas.setText(numeroBarra + "/" + barraCuotas.getMax());
+
                 double valorCuota = metodoFrances(precioProducto, 0.04, numeroBarra);
                 tarjeta1.setText(new DecimalFormat("#").format(valorCuota));
                 tarjeta1.setTextColor(Color.parseColor(verificarSaldo(saldoDisponible, valorCuota)));
+
                 valorCuota = metodoFrances(precioProducto, 0.13, numeroBarra);
                 tarjeta2.setText(new DecimalFormat("#").format(valorCuota));
                 tarjeta2.setTextColor(Color.parseColor(verificarSaldo(saldoDisponible, valorCuota)));
+
                 valorCuota = metodoFrances(precioProducto, 0.09, numeroBarra);
                 tarjeta3.setText(new DecimalFormat("#").format(valorCuota));
                 tarjeta3.setTextColor(Color.parseColor(verificarSaldo(saldoDisponible, valorCuota)));
+
                 valorCuota = metodoFrances(precioProducto, 0.20, numeroBarra);
                 tarjeta4.setText(new DecimalFormat("#").format(valorCuota));
                 tarjeta4.setTextColor(Color.parseColor(verificarSaldo(saldoDisponible, valorCuota)));
+
                 valorCuota = metodoFrances(precioProducto, 0.15, numeroBarra);
                 tarjeta5.setText(new DecimalFormat("#").format(valorCuota));
                 tarjeta5.setTextColor(Color.parseColor(verificarSaldo(saldoDisponible, valorCuota)));
@@ -95,14 +100,23 @@ public class simularCompraFragment extends Fragment {
 
                         double valorCuota = 0;
                         tarjeta1.setText(new DecimalFormat("#").format(valorCuota));
+                        tarjeta1.setTextColor(Color.parseColor(verificarSaldo(saldoDisponible, valorCuota)));
+
                         valorCuota = metodoFrances(precioProducto, 0.13, barraCuotas.getProgress());
                         tarjeta2.setText(new DecimalFormat("#").format(valorCuota));
+                        tarjeta2.setTextColor(Color.parseColor(verificarSaldo(saldoDisponible, valorCuota)));
+
                         valorCuota = metodoFrances(precioProducto, 0.09, barraCuotas.getProgress());
                         tarjeta3.setText(new DecimalFormat("#").format(valorCuota));
+                        tarjeta3.setTextColor(Color.parseColor(verificarSaldo(saldoDisponible, valorCuota)));
+
                         valorCuota = metodoFrances(precioProducto, 0.20, barraCuotas.getProgress());
                         tarjeta4.setText(new DecimalFormat("#").format(valorCuota));
+                        tarjeta4.setTextColor(Color.parseColor(verificarSaldo(saldoDisponible, valorCuota)));
+
                         valorCuota = metodoFrances(precioProducto, 0.15, barraCuotas.getProgress());
                         tarjeta5.setText(new DecimalFormat("#").format(valorCuota));
+                        tarjeta5.setTextColor(Color.parseColor(verificarSaldo(saldoDisponible, valorCuota)));
 
                         return false;
 
@@ -110,16 +124,26 @@ public class simularCompraFragment extends Fragment {
                         Toast.makeText(getActivity(), "Precio actualizado", Toast.LENGTH_SHORT).show();
 
                         cuotas.setText(barraCuotas.getProgress() + "/" + barraCuotas.getMax());
+
                         double valorCuota = metodoFrances(precioProducto, 0.04, barraCuotas.getProgress());
                         tarjeta1.setText(new DecimalFormat("#").format(valorCuota));
+                        tarjeta1.setTextColor(Color.parseColor(verificarSaldo(saldoDisponible, valorCuota)));
+
                         valorCuota = metodoFrances(precioProducto, 0.13, barraCuotas.getProgress());
                         tarjeta2.setText(new DecimalFormat("#").format(valorCuota));
+                        tarjeta2.setTextColor(Color.parseColor(verificarSaldo(saldoDisponible, valorCuota)));
+
                         valorCuota = metodoFrances(precioProducto, 0.09, barraCuotas.getProgress());
                         tarjeta3.setText(new DecimalFormat("#").format(valorCuota));
+                        tarjeta3.setTextColor(Color.parseColor(verificarSaldo(saldoDisponible, valorCuota)));
+
                         valorCuota = metodoFrances(precioProducto, 0.20, barraCuotas.getProgress());
                         tarjeta4.setText(new DecimalFormat("#").format(valorCuota));
+                        tarjeta4.setTextColor(Color.parseColor(verificarSaldo(saldoDisponible, valorCuota)));
+
                         valorCuota = metodoFrances(precioProducto, 0.15, barraCuotas.getProgress());
                         tarjeta5.setText(new DecimalFormat("#").format(valorCuota));
+                        tarjeta5.setTextColor(Color.parseColor(verificarSaldo(saldoDisponible, valorCuota)));
 
                         return true;
                     }
@@ -158,6 +182,12 @@ public class simularCompraFragment extends Fragment {
         }
     }
 
+    /**
+     * Determina el color del texto de la cuota, rojo si se pasa del saldo disponible, negro si no se pasa del saldo disponible
+     * @param saldoDisponibleString Valor del saldo disponible, está tomando desde PrincipalFragment
+     * @param valorCuotaDouble Valor que tiene la cuota, despues de calcular su valor
+     * @return retorna un strint cn color rojo o negro
+     */
     public String verificarSaldo(String saldoDisponibleString, double valorCuotaDouble){
         if(Integer.parseInt(saldoDisponibleString) < valorCuotaDouble){
             return "#F44336";
