@@ -74,7 +74,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:hint="Ingrese Saldo"
-            android:inputType="numberDecimal"
+            android:inputType="number"
             android:textColor="#757575"
             android:textSize="18dp" />
     </LinearLayout>

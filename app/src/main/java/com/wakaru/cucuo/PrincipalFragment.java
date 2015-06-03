@@ -4,18 +4,22 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 /**
  * A placeholder fragment containing a simple view.
  */
-public class PrincipalFragment extends Fragment {
+public class PrincipalFragment extends Fragment implements TextWatcher {
 
     Button simulCompra;
     EditText saldoMensual;
@@ -38,13 +42,19 @@ public class PrincipalFragment extends Fragment {
         String textoSaldoMensual = settings.getString("saldoMensual", null);
         String textoSaldoDisponible = settings.getString("saldoDisponible", null);
 
-        if (textoSaldoMensual == null) {
-            saldoMensual.setText("$ " + 0);
-            saldoDisponible.setText("$ " + 0);
+        if ((textoSaldoMensual == null) || (textoSaldoMensual.equals("0"))) {
+            saldoMensual.setText("0");
+            saldoDisponible.setText("0");
         } else {
-            saldoMensual.setText("$ " + textoSaldoMensual);
-            saldoDisponible.setText("$ " + textoSaldoDisponible);
+            saldoMensual.setText(textoSaldoMensual);
+            if (textoSaldoDisponible.equals("0")) {
+                saldoDisponible.setText("0");
+            } else {
+                saldoDisponible.setText(textoSaldoDisponible);
+            }
         }
+
+        //saldoMensual.addTextChangedListener(this);
 
         simulCompra.setOnClickListener(new Button.OnClickListener() {
 
@@ -52,6 +62,28 @@ public class PrincipalFragment extends Fragment {
             public void onClick(View v) {
                 Intent aSimular = new Intent(getActivity(), simularCompra.class);
                 startActivity(aSimular);
+            }
+        });
+
+        /**
+         * Guarda el valor del saldo mensual. Actualiza el disponible si es 0 (Usa app por primera vez)
+         */
+        saldoMensual.setOnKeyListener(new View.OnKeyListener() {
+
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if ((event.getAction() == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER)) {
+                    EditText saldoMensualViejo = saldoMensual;
+                    if (saldoDisponible.getText().equals("0")) {
+                        saldoDisponible.setText(saldoMensual.getText());
+                        Toast.makeText(getActivity(), "Saldo mensual y disponible actualizados", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(getActivity(), "Saldo mensual actualizado", Toast.LENGTH_SHORT).show();
+                    }
+                    return true;
+                } else {
+                    return false;
+                }
             }
         });
         return root;
@@ -75,5 +107,25 @@ public class PrincipalFragment extends Fragment {
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
+    }
+
+    @Override
+    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+    }
+
+    @Override
+    public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+    }
+
+    @Override
+    public void afterTextChanged(Editable s) {
+        if (saldoDisponible.equals("0")) {
+            saldoDisponible.setText(s);
+            Toast.makeText(this.getActivity(), "Saldo mensual y disponible actualizados", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(this.getActivity(), "Saldo mensual actualizado", Toast.LENGTH_SHORT).show();
+        }
     }
 }
