@@ -19,7 +19,7 @@ import android.widget.Toast;
 /**
  * A placeholder fragment containing a simple view.
  */
-public class PrincipalFragment extends Fragment implements TextWatcher {
+public class PrincipalFragment extends Fragment {
 
     Button simulCompra;
     EditText saldoMensual;
@@ -107,25 +107,5 @@ public class PrincipalFragment extends Fragment implements TextWatcher {
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-    }
-
-    @Override
-    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-    }
-
-    @Override
-    public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-    }
-
-    @Override
-    public void afterTextChanged(Editable s) {
-        if (saldoDisponible.equals("0")) {
-            saldoDisponible.setText(s);
-            Toast.makeText(this.getActivity(), "Saldo mensual y disponible actualizados", Toast.LENGTH_SHORT).show();
-        } else {
-            Toast.makeText(this.getActivity(), "Saldo mensual actualizado", Toast.LENGTH_SHORT).show();
-        }
     }
 }
