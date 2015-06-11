@@ -20,7 +20,7 @@
             android:layout_height="wrap_content"
             android:gravity="left"
             android:text="Tu Saldo disponible para compras es:"
-            android:textColor="#000000"
+            android:textColor="@color/Color_Texto"
             android:textSize="18dp" />
 
         <TextView
@@ -29,7 +29,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="0"
-            android:textColor="#757575"
+            android:textColor="@color/Color_Texto"
             android:textSize="18dp" />
     </LinearLayout>
 
@@ -46,7 +46,7 @@
             android:layout_height="wrap_content"
             android:gravity="left"
             android:text="Tu limite mensual de compras es:"
-            android:textColor="#000000"
+            android:textColor="@color/Color_Texto"
             android:textSize="18dp" />
 
         <EditText
@@ -55,8 +55,8 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:hint="Ingrese Saldo"
-            android:inputType="number"
-            android:textColor="#757575"
+            android:inputType="numberDecimal"
+            android:textColorHint="@color/Color_Texto_Hint"
             android:textSize="18dp" />
     </LinearLayout>
 
@@ -73,12 +73,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/simulCompra"
-            android:gravity="center"
             android:layout_gravity="center_horizontal"
-            android:background="#4CAF50"
+            android:background="@drawable/boton"
             android:text="Simular Compra"
             android:textAllCaps="false"
-            android:textColor="#FFFFFF"
+            android:textColor="@color/Color_Texto_Boton"
             android:textSize="24dp"/>
     </LinearLayout>
 </LinearLayout>

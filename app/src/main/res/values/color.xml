@@ -1,7 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="myGreen">#009688</color>
-    <color name="primaryColor">#FF5722</color>
+    <color name="primaryColor">#673AB7</color>
     <color name="primaryColorDark">#303F9F</color>
     <color name="accentColor">#F44336</color>
+    <color name="white">#FFFFFF</color>
+    <color name="PRESSED_STATE_COLOR">#7E57C2</color>
+    <color name="FOCUSED_STATE_COLOR">#F44336</color>
+    <color name="NORMAL_STATE_COLOR">#673AB7</color>
+    <color name="Saldo_No_Disponible">#EF5350</color>
+    <color name="Saldo_Disponible">#FFFFFF</color>
+    <color name="Precio_Valido">#000000</color>
+    <color name="Cuota_Valido">#000000</color>
+    <color name="Precio_No_Valido">#F44336</color>
+    <color name="Cuota_No_Valido">#F44336</color>
+    <color name="Color_Texto">#000000</color>
+    <color name="Color_Texto_Boton">#FFFFFF</color>
+    <color name="Color_Texto_Hint">#9E9E9E</color>
+    <color name="Background_Tarjetas">#9575CD</color>
+    <color name="Color_Texto_Tarjetas">#FFFFFF</color>
+    <color name="Color_Hint_Texto_Seleccionado">#FFFFFF</color>
 </resources>

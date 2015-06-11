@@ -1,18 +1,19 @@
 package com.wakaru.cucuo;
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
-import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 
 
 /**
@@ -21,8 +22,8 @@ import java.text.DecimalFormat;
 public class simularCompraFragment extends Fragment {
 
     private EditText precioProducto;
-    private TextView cuotas, tarjeta1, tarjeta2, tarjeta3, tarjeta4, tarjeta5;
-    private SeekBar barraCuotas;
+    private TextView tarjeta1, tarjeta2, tarjeta3, tarjeta4, TexViewNumeroCuotas, TexViewPrecioDelProducto;
+    private EditText Edit_Text_Cuotas;
 
     public simularCompraFragment() {
     }
@@ -35,58 +36,104 @@ public class simularCompraFragment extends Fragment {
         View root2 = inflater.inflate(R.layout.fragment_simular_compra, container, false);
 
         precioProducto = (EditText) root2.findViewById(R.id.editTextPrecioProducto);
-        cuotas = (TextView) root2.findViewById(R.id.textViewCuotasSeleccionadas);
         tarjeta1 = (TextView) root2.findViewById(R.id.textViewCuotaTarjeta1);
         tarjeta2 = (TextView) root2.findViewById(R.id.textViewCuotaTarjeta2);
         tarjeta3 = (TextView) root2.findViewById(R.id.textViewCuotaTarjeta3);
         tarjeta4 = (TextView) root2.findViewById(R.id.textViewCuotaTarjeta4);
-        tarjeta5 = (TextView) root2.findViewById(R.id.textViewCuotaTarjeta5);
-        barraCuotas = (SeekBar) root2.findViewById(R.id.seekBar);
-        barraCuotas.setMax(48);
-
-        cuotas.setText(barraCuotas.getProgress() + "/" + barraCuotas.getMax());
+        TexViewNumeroCuotas = (TextView) root2.findViewById(R.id.TexViewNumeroCuotas);
+        TexViewPrecioDelProducto = (TextView) root2.findViewById(R.id.TexViewPrecioDelProducto);
+        Edit_Text_Cuotas = (EditText) root2.findViewById(R.id.editTextNumeroCuotas);
 
         final String saldoDisponible = getActivity().getIntent().getExtras().getString("saldoDisponibleKey");
 
-        /**
-         * Actualiza el valor de las cuotas, de acuerdo al valor de la barra deslizante
-         */
-        barraCuotas.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            int numeroBarra;
-
+        Edit_Text_Cuotas.addTextChangedListener(new TextWatcher() {
             @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                numeroBarra = progress;
-                cuotas.setText(progress + "/" + barraCuotas.getMax());
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
             }
 
             @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
             }
 
             @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-                cuotas.setText(numeroBarra + "/" + barraCuotas.getMax());
+            public void afterTextChanged(Editable s) {
 
-                double valorCuota = metodoFrances(precioProducto, 0.04, numeroBarra);
-                tarjeta1.setText(new DecimalFormat("#").format(valorCuota));
-                tarjeta1.setTextColor(Color.parseColor(verificarSaldo(saldoDisponible, valorCuota)));
+                if (Edit_Text_Cuotas.getText().toString().equals("")) {
+                    TexViewNumeroCuotas.setVisibility(TexViewNumeroCuotas.INVISIBLE);
+                } else {
+                    TexViewNumeroCuotas.setVisibility(TexViewNumeroCuotas.VISIBLE);
+                }
+            }
+        });
 
-                valorCuota = metodoFrances(precioProducto, 0.13, numeroBarra);
-                tarjeta2.setText(new DecimalFormat("#").format(valorCuota));
-                tarjeta2.setTextColor(Color.parseColor(verificarSaldo(saldoDisponible, valorCuota)));
+        precioProducto.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
-                valorCuota = metodoFrances(precioProducto, 0.09, numeroBarra);
-                tarjeta3.setText(new DecimalFormat("#").format(valorCuota));
-                tarjeta3.setTextColor(Color.parseColor(verificarSaldo(saldoDisponible, valorCuota)));
+            }
 
-                valorCuota = metodoFrances(precioProducto, 0.20, numeroBarra);
-                tarjeta4.setText(new DecimalFormat("#").format(valorCuota));
-                tarjeta4.setTextColor(Color.parseColor(verificarSaldo(saldoDisponible, valorCuota)));
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
 
-                valorCuota = metodoFrances(precioProducto, 0.15, numeroBarra);
-                tarjeta5.setText(new DecimalFormat("#").format(valorCuota));
-                tarjeta5.setTextColor(Color.parseColor(verificarSaldo(saldoDisponible, valorCuota)));
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+                if (precioProducto.getText().toString().equals("")) {
+                    TexViewPrecioDelProducto.setVisibility(TexViewNumeroCuotas.INVISIBLE);
+                } else {
+                    TexViewPrecioDelProducto.setVisibility(TexViewNumeroCuotas.VISIBLE);
+                }
+            }
+        });
+
+        Edit_Text_Cuotas.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if ((event.getAction() == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER)) {
+                    if (precioProducto.getText().toString().equals("")) {
+
+                        Toast.makeText(getActivity(), "Precio invalido", Toast.LENGTH_SHORT).show();
+
+                        precioProducto.setHintTextColor(getResources().getColor(R.color.Precio_No_Valido));
+                        calcularCuotas(saldoDisponible, tarjeta1, tarjeta2, tarjeta3, tarjeta4);
+
+                        return false;
+
+                    } else {
+
+                        if (Edit_Text_Cuotas.getText().toString().equals("")) {
+
+                            Edit_Text_Cuotas.setHintTextColor(getResources().getColor(R.color.Cuota_No_Valido));
+
+                            return true;
+                        } else {
+
+                            Edit_Text_Cuotas.setHintTextColor(getResources().getColor(R.color.Cuota_Valido));
+                            if (Integer.parseInt(Edit_Text_Cuotas.getText().toString()) <= 1) {
+
+                                Toast.makeText(getActivity(), "Mínimo 2 cuotas", Toast.LENGTH_SHORT).show();
+
+                                Edit_Text_Cuotas.setText("2");
+                                calcularCuotas(saldoDisponible, tarjeta1, tarjeta2, tarjeta3, tarjeta4);
+
+                                return true;
+
+                            } else {
+
+                                calcularCuotas(saldoDisponible, tarjeta1, tarjeta2, tarjeta3, tarjeta4);
+
+                                return true;
+                            }
+                        }
+                    }
+                } else {
+
+                    return false;
+                }
             }
         });
 
@@ -96,54 +143,20 @@ public class simularCompraFragment extends Fragment {
             public boolean onKey(View v, int keyCode, KeyEvent event) {
                 if ((event.getAction() == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER)) {
                     if (precioProducto.getText().toString().equals("")) {
+
                         Toast.makeText(getActivity(), "Precio invalido", Toast.LENGTH_SHORT).show();
 
-                        double valorCuota = 0;
-                        tarjeta1.setText(new DecimalFormat("#").format(valorCuota));
-                        tarjeta1.setTextColor(Color.parseColor(verificarSaldo(saldoDisponible, valorCuota)));
-
-                        valorCuota = metodoFrances(precioProducto, 0.13, barraCuotas.getProgress());
-                        tarjeta2.setText(new DecimalFormat("#").format(valorCuota));
-                        tarjeta2.setTextColor(Color.parseColor(verificarSaldo(saldoDisponible, valorCuota)));
-
-                        valorCuota = metodoFrances(precioProducto, 0.09, barraCuotas.getProgress());
-                        tarjeta3.setText(new DecimalFormat("#").format(valorCuota));
-                        tarjeta3.setTextColor(Color.parseColor(verificarSaldo(saldoDisponible, valorCuota)));
-
-                        valorCuota = metodoFrances(precioProducto, 0.20, barraCuotas.getProgress());
-                        tarjeta4.setText(new DecimalFormat("#").format(valorCuota));
-                        tarjeta4.setTextColor(Color.parseColor(verificarSaldo(saldoDisponible, valorCuota)));
-
-                        valorCuota = metodoFrances(precioProducto, 0.15, barraCuotas.getProgress());
-                        tarjeta5.setText(new DecimalFormat("#").format(valorCuota));
-                        tarjeta5.setTextColor(Color.parseColor(verificarSaldo(saldoDisponible, valorCuota)));
+                        precioProducto.setHintTextColor(getResources().getColor(R.color.Precio_No_Valido));
+                        calcularCuotas(saldoDisponible, tarjeta1, tarjeta2, tarjeta3, tarjeta4);
 
                         return false;
 
                     } else {
+
                         Toast.makeText(getActivity(), "Precio actualizado", Toast.LENGTH_SHORT).show();
 
-                        cuotas.setText(barraCuotas.getProgress() + "/" + barraCuotas.getMax());
-
-                        double valorCuota = metodoFrances(precioProducto, 0.04, barraCuotas.getProgress());
-                        tarjeta1.setText(new DecimalFormat("#").format(valorCuota));
-                        tarjeta1.setTextColor(Color.parseColor(verificarSaldo(saldoDisponible, valorCuota)));
-
-                        valorCuota = metodoFrances(precioProducto, 0.13, barraCuotas.getProgress());
-                        tarjeta2.setText(new DecimalFormat("#").format(valorCuota));
-                        tarjeta2.setTextColor(Color.parseColor(verificarSaldo(saldoDisponible, valorCuota)));
-
-                        valorCuota = metodoFrances(precioProducto, 0.09, barraCuotas.getProgress());
-                        tarjeta3.setText(new DecimalFormat("#").format(valorCuota));
-                        tarjeta3.setTextColor(Color.parseColor(verificarSaldo(saldoDisponible, valorCuota)));
-
-                        valorCuota = metodoFrances(precioProducto, 0.20, barraCuotas.getProgress());
-                        tarjeta4.setText(new DecimalFormat("#").format(valorCuota));
-                        tarjeta4.setTextColor(Color.parseColor(verificarSaldo(saldoDisponible, valorCuota)));
-
-                        valorCuota = metodoFrances(precioProducto, 0.15, barraCuotas.getProgress());
-                        tarjeta5.setText(new DecimalFormat("#").format(valorCuota));
-                        tarjeta5.setTextColor(Color.parseColor(verificarSaldo(saldoDisponible, valorCuota)));
+                        precioProducto.setHintTextColor(getResources().getColor(R.color.Precio_Valido));
+                        calcularCuotas(saldoDisponible, tarjeta1, tarjeta2, tarjeta3, tarjeta4);
 
                         return true;
                     }
@@ -153,6 +166,53 @@ public class simularCompraFragment extends Fragment {
             }
         });
         return root2;
+    }
+
+    public void calcularCuotas(String saldoDisponible, TextView tarjeta1, TextView tarjeta2, TextView tarjeta3, TextView tarjeta4) {
+
+        DecimalFormatSymbols simbolo = new DecimalFormatSymbols();
+        simbolo.setDecimalSeparator('.');
+        simbolo.setGroupingSeparator(',');
+        DecimalFormat formateador = new DecimalFormat("$ ###,###", simbolo);
+
+        if (precioProducto.getText().toString().equals("")) {
+            double valorCuota = 0;
+            tarjeta1.setText(formateador.format(Double.parseDouble(new DecimalFormat("#").format(valorCuota))));
+            tarjeta1.setTextColor(verificarSaldo(saldoDisponible, valorCuota));
+
+            valorCuota = 0;
+            tarjeta2.setText(formateador.format(Double.parseDouble(new DecimalFormat("#").format(valorCuota))));
+            tarjeta2.setTextColor(verificarSaldo(saldoDisponible, valorCuota));
+
+            valorCuota = 0;
+            tarjeta3.setText(formateador.format(Double.parseDouble(new DecimalFormat("#").format(valorCuota))));
+            tarjeta3.setTextColor(verificarSaldo(saldoDisponible, valorCuota));
+
+            valorCuota = 0;
+            tarjeta4.setText(formateador.format(Double.parseDouble(new DecimalFormat("#").format(valorCuota))));
+            tarjeta4.setTextColor(verificarSaldo(saldoDisponible, valorCuota));
+        } else {
+
+            if (Edit_Text_Cuotas.getText().toString().equals("")) {
+                Edit_Text_Cuotas.setText("2");
+            }
+
+            double valorCuota = metodoFrances(precioProducto, 0.04, Integer.parseInt(Edit_Text_Cuotas.getText().toString()));
+            tarjeta1.setText(formateador.format(Double.parseDouble(new DecimalFormat("#").format(valorCuota))));
+            tarjeta1.setTextColor(verificarSaldo(saldoDisponible, valorCuota));
+
+            valorCuota = metodoFrances(precioProducto, 0.13, Integer.parseInt(Edit_Text_Cuotas.getText().toString()));
+            tarjeta2.setText(formateador.format(Double.parseDouble(new DecimalFormat("#").format(valorCuota))));
+            tarjeta2.setTextColor(verificarSaldo(saldoDisponible, valorCuota));
+
+            valorCuota = metodoFrances(precioProducto, 0.09, Integer.parseInt(Edit_Text_Cuotas.getText().toString()));
+            tarjeta3.setText(formateador.format(Double.parseDouble(new DecimalFormat("#").format(valorCuota))));
+            tarjeta3.setTextColor(verificarSaldo(saldoDisponible, valorCuota));
+
+            valorCuota = metodoFrances(precioProducto, 0.20, Integer.parseInt(Edit_Text_Cuotas.getText().toString()));
+            tarjeta4.setText(formateador.format(Double.parseDouble(new DecimalFormat("#").format(valorCuota))));
+            tarjeta4.setTextColor(verificarSaldo(saldoDisponible, valorCuota));
+        }
     }
 
     /**
@@ -166,17 +226,23 @@ public class simularCompraFragment extends Fragment {
     public double metodoFrances(EditText valorPrecioProducto, double tasaInteres, int numeroCuotas) {
 
         if (valorPrecioProducto.getText().toString().equals("")) {
+
             Toast.makeText(this.getActivity(), "Precio invalido", Toast.LENGTH_SHORT).show();
-            precioProducto.setHintTextColor(Color.parseColor("#F44336"));
+            precioProducto.setHintTextColor(getResources().getColor(R.color.Precio_No_Valido));
+
             return 0;
         } else {
+
             if (numeroCuotas == 0) {
+
                 return 0;
             } else if (numeroCuotas == 1) {
+
                 return Integer.parseInt(valorPrecioProducto.getText().toString());
             } else {
+
                 double valorCuota = Integer.parseInt(valorPrecioProducto.getText().toString()) * ((tasaInteres * Math.pow(1 + tasaInteres, numeroCuotas)) / (Math.pow(1 + tasaInteres, numeroCuotas) - 1));
-                precioProducto.setHintTextColor(Color.parseColor("#000000"));
+                precioProducto.setHintTextColor(getResources().getColor(R.color.Precio_Valido));
                 return valorCuota;
             }
         }
@@ -188,12 +254,14 @@ public class simularCompraFragment extends Fragment {
      * @param valorCuotaDouble Valor que tiene la cuota, despues de calcular su valor
      * @return retorna un strint cn color rojo o negro
      */
-    public String verificarSaldo(String saldoDisponibleString, double valorCuotaDouble){
+    public int verificarSaldo(String saldoDisponibleString, double valorCuotaDouble) {
         if(Integer.parseInt(saldoDisponibleString) < valorCuotaDouble){
-            return "#F44336";
+            //return "#EF5350";
+            return getResources().getColor(R.color.Saldo_No_Disponible);
         }
         else{
-            return "#000000";
+            //int color = ;
+            return getResources().getColor(R.color.Saldo_Disponible);
         }
     }
 }

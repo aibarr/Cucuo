@@ -2,12 +2,12 @@ package com.wakaru.cucuo;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -24,6 +24,7 @@ public class PrincipalFragment extends Fragment {
     Button simulCompra;
     EditText saldoMensual;
     TextView saldoDisponible;
+    TextView tituloSaldoDiponible;
     public static final String archivo = "MyPrefsFile";
 
     public PrincipalFragment() {
@@ -36,6 +37,7 @@ public class PrincipalFragment extends Fragment {
         simulCompra = (Button) root.findViewById(R.id.simulCompra);
         saldoMensual = (EditText) root.findViewById(R.id.saldoMensual);
         saldoDisponible = (TextView) root.findViewById(R.id.textViewSaldoDisponible);
+        tituloSaldoDiponible = (TextView) root.findViewById(R.id.showLimit);
 
 
         SharedPreferences settings = this.getActivity().getSharedPreferences(archivo, 0);
@@ -74,6 +76,7 @@ public class PrincipalFragment extends Fragment {
 
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
+
                 if ((event.getAction() == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER)) {
                     EditText saldoMensualViejo = saldoMensual;
                     if (saldoDisponible.getText().equals("0")) {
@@ -86,6 +89,14 @@ public class PrincipalFragment extends Fragment {
                 } else {
                     return false;
                 }
+            }
+        });
+
+        saldoMensual.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                tituloSaldoDiponible.setTextColor(Color.parseColor("#F44336"));
+                return false;
             }
         });
         return root;
