@@ -5,6 +5,8 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -12,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,9 +25,10 @@ import android.widget.Toast;
 public class PrincipalFragment extends Fragment {
 
     Button simulCompra;
-    EditText saldoMensual;
-    TextView saldoDisponible;
-    TextView tituloSaldoDiponible;
+    EditText saldoDisponible;
+    TextView TextViewTituloSaldo;
+    int saldoDisponibleValor;
+    ImageButton ImageButtonAumentar;
     public static final String archivo = "MyPrefsFile";
 
     public PrincipalFragment() {
@@ -35,70 +39,94 @@ public class PrincipalFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_principal, container, false);
 
         simulCompra = (Button) root.findViewById(R.id.simulCompra);
-        saldoMensual = (EditText) root.findViewById(R.id.saldoMensual);
-        saldoDisponible = (TextView) root.findViewById(R.id.textViewSaldoDisponible);
-        tituloSaldoDiponible = (TextView) root.findViewById(R.id.showLimit);
-
+        saldoDisponible = (EditText) root.findViewById(R.id.textViewSaldoDisponible);
+        TextViewTituloSaldo = (TextView) root.findViewById(R.id.TextViewTituloSaldo);
+        ImageButtonAumentar = (ImageButton) root.findViewById(R.id.ImageButtonAumentar);
 
         SharedPreferences settings = this.getActivity().getSharedPreferences(archivo, 0);
-        String textoSaldoMensual = settings.getString("saldoMensual", null);
-        String textoSaldoDisponible = settings.getString("saldoDisponible", null);
 
-        if ((textoSaldoMensual == null) || (textoSaldoMensual.equals("0"))) {
-            saldoMensual.setText("0");
-            saldoDisponible.setText("0");
-        } else {
-            saldoMensual.setText(textoSaldoMensual);
-            if (textoSaldoDisponible.equals("0")) {
-                saldoDisponible.setText("0");
-            } else {
-                saldoDisponible.setText(textoSaldoDisponible);
-            }
+        String textoSaldoDisponible = settings.getString("saldoDisponible", null);
+        int intSaldoDisponible = settings.getInt("saldoDisponibleValor",-1);
+
+        if (intSaldoDisponible == -1){
+
+            intSaldoDisponible = -1;
+            saldoDisponible.setText("");
+        }
+        else {
+            //disponible editado
+
+            saldoDisponible.setText(textoSaldoDisponible);
         }
 
-        //saldoMensual.addTextChangedListener(this);
 
-        simulCompra.setOnClickListener(new Button.OnClickListener() {
+
+        saldoDisponible.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
 
             @Override
-            public void onClick(View v) {
-                Intent aSimular = new Intent(getActivity(), simularCompra.class);
-                aSimular.putExtra("saldoDisponibleKey", saldoDisponible.getText().toString());
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
 
-                startActivity(aSimular);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+                if (saldoDisponible.getText().toString().equals("")) {
+                    TextViewTituloSaldo.setVisibility(TextViewTituloSaldo.INVISIBLE);
+                } else {
+                    TextViewTituloSaldo.setVisibility(TextViewTituloSaldo.VISIBLE);
+                    saldoDisponible.setHintTextColor(getResources().getColor(R.color.Color_Texto_Hint));
+                }
             }
         });
 
-        /**
-         * Guarda el valor del saldo mensual. Actualiza el disponible si es 0 (Usa app por primera vez)
-         */
-        saldoMensual.setOnKeyListener(new View.OnKeyListener() {
+        saldoDisponible.setOnKeyListener(new View.OnKeyListener() {
 
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
 
                 if ((event.getAction() == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER)) {
-                    EditText saldoMensualViejo = saldoMensual;
-                    if (saldoDisponible.getText().equals("0")) {
-                        saldoDisponible.setText(saldoMensual.getText());
-                        Toast.makeText(getActivity(), "Saldo mensual y disponible actualizados", Toast.LENGTH_SHORT).show();
+
+                    if (saldoDisponible.getText().equals("")) {
+
+                        Toast.makeText(getActivity(), "Saldo actualizados vacio", Toast.LENGTH_SHORT).show();
+
                     } else {
-                        Toast.makeText(getActivity(), "Saldo mensual actualizado", Toast.LENGTH_SHORT).show();
+
+                        Toast.makeText(getActivity(), "Saldo actualizado", Toast.LENGTH_SHORT).show();
                     }
                     return true;
                 } else {
+
                     return false;
                 }
             }
         });
 
-        saldoMensual.setOnTouchListener(new View.OnTouchListener() {
+        simulCompra.setOnClickListener(new Button.OnClickListener() {
+
             @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                tituloSaldoDiponible.setTextColor(Color.parseColor("#F44336"));
-                return false;
+            public void onClick(View v) {
+
+                if (saldoDisponible.getText().toString().equals("")){
+                    Toast.makeText(getActivity(), "Saldo no valido", Toast.LENGTH_SHORT).show();
+                    saldoDisponible.setHintTextColor(getResources().getColor(R.color.Saldo_No_Disponible));
+                }
+
+                else {
+                    saldoDisponible.setHintTextColor(getResources().getColor(R.color.Color_Texto_Hint));
+                    Intent aSimular = new Intent(getActivity(), simularCompra.class);
+                    aSimular.putExtra("saldoDisponibleKey", saldoDisponible.getText().toString());
+
+                    startActivity(aSimular);
+                }
             }
         });
+
         return root;
     }
 
@@ -111,8 +139,8 @@ public class PrincipalFragment extends Fragment {
 
         SharedPreferences settings = this.getActivity().getSharedPreferences(archivo, 0);
         SharedPreferences.Editor editor = settings.edit();
-        editor.putString("saldoMensual", saldoMensual.getText().toString());
         editor.putString("saldoDisponible", saldoDisponible.getText().toString());
+        editor.putInt("saldoDisponibleValor", saldoDisponibleValor);
 
         editor.commit();
     }
@@ -120,5 +148,9 @@ public class PrincipalFragment extends Fragment {
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
+    }
+
+    public void guardarDatos(){
+
     }
 }

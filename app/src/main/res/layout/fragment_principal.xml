@@ -9,31 +9,33 @@
     tools:context=".PrincipalFragment">
 
     <TextView
-        android:id="@+id/tituloSaldo"
-        android:paddingBottom="16dp"
-        android:layout_width="match_parent"
+        android:id="@+id/TextViewTituloSaldo"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:paddingBottom="8dp"
+        android:text="Saldo diponible"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
-        android:gravity="left"
-        android:text="Tu Saldo disponible para compras es:"
-        android:textColor="@color/Color_Texto"
-        android:textSize="18dp" />
+        android:textColor="@color/accentColor"
+        android:textSize="12dp"
+        android:visibility="invisible"/>
 
-    <TextView
-        android:paddingBottom="16dp"
+    <EditText
         android:id="@+id/textViewSaldoDisponible"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
-        android:layout_below="@+id/tituloSaldo"
+        android:paddingBottom="16dp"
+        android:layout_below="@+id/TextViewTituloSaldo"
         android:gravity="center"
-        android:text="0"
         android:textColor="@color/Color_Texto"
-        android:textSize="18dp" />
+        android:textSize="16dp"
+        android:hint="Saldo disponible"
+        android:inputType="number"/>
 
     <ImageButton
+        android:layout_marginTop="16dp"
         android:layout_marginLeft="64dp"
         android:layout_width="56dp"
         android:layout_height="56dp"
@@ -68,35 +70,12 @@
         android:src="@drawable/menos"
         android:background="@drawable/circle" />
 
-    <TextView
-        android:paddingTop="16dp"
-        android:id="@+id/showLimit"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/ImageButtonEdit"
-        android:gravity="left"
-        android:text="Tu limite mensual de compras es:"
-        android:textColor="@color/Color_Texto"
-        android:textSize="18dp" />
-
-    <EditText
-        android:paddingTop="16dp"
-        android:paddingBottom="16dp"
-        android:id="@+id/saldoMensual"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/showLimit"
-        android:gravity="center"
-        android:hint="Ingrese Saldo"
-        android:inputType="numberDecimal"
-        android:textColorHint="@color/Color_Texto_Hint"
-        android:textSize="16sp" />
-
     <Button
+        android:layout_marginTop="16dp"
         android:id="@+id/simulCompra"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/saldoMensual"
+        android:layout_below="@+id/ImageButtonEdit"
         android:background="@drawable/boton"
         android:layout_centerHorizontal="true"
         android:text="Simular Compra"
