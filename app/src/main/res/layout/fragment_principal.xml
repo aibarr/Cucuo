@@ -1,83 +1,106 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingTop="16dp"
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context=".PrincipalFragment">
 
-    <LinearLayout
+    <TextView
+        android:id="@+id/tituloSaldo"
+        android:paddingBottom="16dp"
         android:layout_width="match_parent"
-        android:layout_height="72dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginTop="16dp"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:gravity="left"
+        android:text="Tu Saldo disponible para compras es:"
+        android:textColor="@color/Color_Texto"
+        android:textSize="18dp" />
 
-        <TextView
-            android:id="@+id/tituloSaldo"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="left"
-            android:text="Tu Saldo disponible para compras es:"
-            android:textColor="@color/Color_Texto"
-            android:textSize="18dp" />
-
-        <TextView
-            android:id="@+id/textViewSaldoDisponible"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="0"
-            android:textColor="@color/Color_Texto"
-            android:textSize="18dp" />
-    </LinearLayout>
-
-    <LinearLayout
+    <TextView
+        android:paddingBottom="16dp"
+        android:id="@+id/textViewSaldoDisponible"
         android:layout_width="match_parent"
-        android:layout_height="72dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/tituloSaldo"
+        android:gravity="center"
+        android:text="0"
+        android:textColor="@color/Color_Texto"
+        android:textSize="18dp" />
 
-        <TextView
-            android:id="@+id/showLimit"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="left"
-            android:text="Tu limite mensual de compras es:"
-            android:textColor="@color/Color_Texto"
-            android:textSize="18dp" />
+    <ImageButton
+        android:layout_marginLeft="64dp"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:text="New Button"
+        android:id="@+id/ImageButtonEdit"
+        android:elevation="10dp"
+        android:layout_below="@+id/textViewSaldoDisponible"
+        android:layout_alignParentLeft="true"
+        android:src="@drawable/mas"
+        android:background="@drawable/circle" />
 
-        <EditText
-            android:id="@+id/saldoMensual"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:hint="Ingrese Saldo"
-            android:inputType="numberDecimal"
-            android:textColorHint="@color/Color_Texto_Hint"
-            android:textSize="18dp" />
-    </LinearLayout>
+    <ImageButton
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:text="New Button"
+        android:id="@+id/ImageButtonAumentar"
+        android:elevation="10dp"
+        android:layout_centerHorizontal="true"
+        android:layout_alignBottom="@+id/ImageButtonEdit"
+        android:src="@drawable/edit"
+        android:background="@drawable/circle" />
 
-    <LinearLayout
+    <ImageButton
+        android:layout_marginRight="64dp"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:text="New Button"
+        android:id="@+id/ImageButtonRestar"
+        android:elevation="10dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignBottom="@+id/ImageButtonEdit"
+        android:src="@drawable/menos"
+        android:background="@drawable/circle" />
+
+    <TextView
+        android:paddingTop="16dp"
+        android:id="@+id/showLimit"
         android:layout_width="match_parent"
-        android:layout_height="72dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginTop="8dp"
-        android:orientation="vertical"
-        android:gravity="center_vertical">
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ImageButtonEdit"
+        android:gravity="left"
+        android:text="Tu limite mensual de compras es:"
+        android:textColor="@color/Color_Texto"
+        android:textSize="18dp" />
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/simulCompra"
-            android:layout_gravity="center_horizontal"
-            android:background="@drawable/boton"
-            android:text="Simular Compra"
-            android:textAllCaps="false"
-            android:textColor="@color/Color_Texto_Boton"
-            android:textSize="24dp"/>
-    </LinearLayout>
-</LinearLayout>
+    <EditText
+        android:paddingTop="16dp"
+        android:paddingBottom="16dp"
+        android:id="@+id/saldoMensual"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/showLimit"
+        android:gravity="center"
+        android:hint="Ingrese Saldo"
+        android:inputType="numberDecimal"
+        android:textColorHint="@color/Color_Texto_Hint"
+        android:textSize="16sp" />
+
+    <Button
+        android:id="@+id/simulCompra"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/saldoMensual"
+        android:background="@drawable/boton"
+        android:layout_centerHorizontal="true"
+        android:text="Simular Compra"
+        android:textAllCaps="false"
+        android:textColor="@color/Color_Texto_Boton"
+        android:textSize="24dp" />
+</RelativeLayout>
