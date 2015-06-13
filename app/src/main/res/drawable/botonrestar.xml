@@ -5,9 +5,9 @@
     <!-- pressed state -->
     <item android:state_pressed="true">
         <inset xmlns:android="http://schemas.android.com/apk/res/android" android:insetBottom="@dimen/button_inset_vertical_material" android:insetLeft="@dimen/button_inset_horizontal_material" android:insetRight="@dimen/button_inset_horizontal_material" android:insetTop="@dimen/button_inset_vertical_material">
-            <shape android:shape="oval">
+            <shape android:shape="rectangle">
                 <corners android:radius="@dimen/control_corner_material" />
-                <solid android:color="@color/PRESSED_CIRCLE_STATE_COLOR" />
+                <solid android:color="@color/PRESSED_RESTAR_STATE_COLOR" />
                 <padding android:bottom="@dimen/button_padding_vertical_material" android:left="@dimen/button_padding_horizontal_material" android:right="@dimen/button_padding_horizontal_material" android:top="@dimen/button_padding_vertical_material" />
             </shape>
         </inset>
@@ -16,9 +16,9 @@
     <!-- focused state -->
     <item android:state_focused="true">
         <inset xmlns:android="http://schemas.android.com/apk/res/android" android:insetBottom="@dimen/button_inset_vertical_material" android:insetLeft="@dimen/button_inset_horizontal_material" android:insetRight="@dimen/button_inset_horizontal_material" android:insetTop="@dimen/button_inset_vertical_material">
-            <shape android:shape="oval">
+            <shape android:shape="rectangle">
                 <corners android:radius="@dimen/control_corner_material" />
-                <solid android:color="@color/FOCUSED_CIRCLE_STATE_COLOR" />
+                <solid android:color="@color/FOCUSED_STATE_COLOR" />
                 <padding android:bottom="@dimen/button_padding_vertical_material" android:left="@dimen/button_padding_horizontal_material" android:right="@dimen/button_padding_horizontal_material" android:top="@dimen/button_padding_vertical_material" />
             </shape>
         </inset>
@@ -27,9 +27,9 @@
     <!-- normal state -->
     <item>
         <inset xmlns:android="http://schemas.android.com/apk/res/android" android:insetBottom="@dimen/button_inset_vertical_material" android:insetLeft="@dimen/button_inset_horizontal_material" android:insetRight="@dimen/button_inset_horizontal_material" android:insetTop="@dimen/button_inset_vertical_material">
-            <shape android:shape="oval">
+            <shape android:shape="rectangle">
                 <corners android:radius="@dimen/control_corner_material" />
-                <solid android:color="@color/NORMAL_CIRCLE_STATE_COLOR" />
+                <solid android:color="@color/NORMAL_RESTAR_STATE_COLOR" />
                 <padding android:bottom="@dimen/button_padding_vertical_material" android:left="@dimen/button_padding_horizontal_material" android:right="@dimen/button_padding_horizontal_material" android:top="@dimen/button_padding_vertical_material" />
             </shape>
         </inset>
