@@ -26,9 +26,12 @@ public class PrincipalFragment extends Fragment {
 
     Button simulCompra;
     EditText saldoDisponible;
+    EditText EditTextAgregarSaldo;
+    EditText EditTextReducirSaldo;
     TextView TextViewTituloSaldo;
     int saldoDisponibleValor;
-    ImageButton ImageButtonAumentar;
+    Button ButtonAgregarSaldo;
+    Button ButtonRestarSaldo;
     public static final String archivo = "MyPrefsFile";
 
     public PrincipalFragment() {
@@ -39,9 +42,12 @@ public class PrincipalFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_principal, container, false);
 
         simulCompra = (Button) root.findViewById(R.id.simulCompra);
+        ButtonAgregarSaldo = (Button) root.findViewById(R.id.ButtonAgregarSaldo);
+        ButtonRestarSaldo = (Button) root.findViewById(R.id.ButtonRestarSaldo);
         saldoDisponible = (EditText) root.findViewById(R.id.textViewSaldoDisponible);
+        EditTextAgregarSaldo = (EditText) root.findViewById(R.id.EditTextAgregarSaldo);
+        EditTextReducirSaldo = (EditText) root.findViewById(R.id.EditTextReducirSaldo);
         TextViewTituloSaldo = (TextView) root.findViewById(R.id.TextViewTituloSaldo);
-        ImageButtonAumentar = (ImageButton) root.findViewById(R.id.ImageButtonAumentar);
 
         SharedPreferences settings = this.getActivity().getSharedPreferences(archivo, 0);
 
@@ -54,8 +60,7 @@ public class PrincipalFragment extends Fragment {
             saldoDisponible.setText("");
         }
         else {
-            //disponible editado
-
+            TextViewTituloSaldo.setVisibility(TextViewTituloSaldo.VISIBLE);
             saldoDisponible.setText(textoSaldoDisponible);
         }
 
@@ -80,6 +85,39 @@ public class PrincipalFragment extends Fragment {
                 } else {
                     TextViewTituloSaldo.setVisibility(TextViewTituloSaldo.VISIBLE);
                     saldoDisponible.setHintTextColor(getResources().getColor(R.color.Color_Texto_Hint));
+                }
+            }
+        });
+
+        ButtonAgregarSaldo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (EditTextAgregarSaldo.getText().toString().equals("")) {
+                    Toast.makeText(getActivity(), "No hay saldo", Toast.LENGTH_SHORT).show();
+                } else {
+                    int nuevoDisponible = Integer.parseInt(saldoDisponible.getText().toString()) + Integer.parseInt(EditTextAgregarSaldo.getText().toString());
+                    saldoDisponible.setText(Integer.toString(nuevoDisponible));
+                    EditTextAgregarSaldo.setText("");
+                }
+            }
+        });
+
+        ButtonRestarSaldo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (EditTextReducirSaldo.getText().toString().equals("")) {
+                    Toast.makeText(getActivity(), "No hay saldo", Toast.LENGTH_SHORT).show();
+                } else {
+                    int nuevoDisponible = Integer.parseInt(saldoDisponible.getText().toString()) - Integer.parseInt(EditTextReducirSaldo.getText().toString());
+
+                    if ( nuevoDisponible < 0){
+                        Toast.makeText(getActivity(), "Saldo insuficiente", Toast.LENGTH_SHORT).show();
+                    }
+                    else {
+                        saldoDisponible.setText(Integer.toString(nuevoDisponible));
+                        EditTextReducirSaldo.setText("");
+                    }
                 }
             }
         });

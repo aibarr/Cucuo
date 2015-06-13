@@ -20,7 +20,10 @@
     <color name="Background_Tarjetas">#9575CD</color>
     <color name="Color_Texto_Tarjetas">#FFFFFF</color>
     <color name="Color_Hint_Texto_Seleccionado">#FFFFFF</color>
-    <color name="PRESSED_CIRCLE_STATE_COLOR">#9575CD</color>
-    <color name="FOCUSED_CIRCLE_STATE_COLOR">#7E57C2</color>
-    <color name="NORMAL_CIRCLE_STATE_COLOR">#B39DDB</color>
+    <color name="PRESSED_AGREGAR_STATE_COLOR">#1B5E20</color>
+    <color name="FOCUSED_AGREGAR_STATE_COLOR">#7E57C2</color>
+    <color name="NORMAL_AGREGAR_STATE_COLOR">#4CAF50</color>
+    <color name="PRESSED_RESTAR_STATE_COLOR">#B71C1C</color>
+    <color name="FOCUSED_RESTAR_STATE_COLOR">#7E57C2</color>
+    <color name="NORMAL_RESTAR_STATE_COLOR">#F44336</color>
 </resources>
