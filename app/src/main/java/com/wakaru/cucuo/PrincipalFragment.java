@@ -96,6 +96,56 @@ public class PrincipalFragment extends Fragment {
             }
         });
 
+        EditTextAgregarSaldo.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+                if (EditTextAgregarSaldo.getText().toString().equals("")) {
+
+                } else {
+                    EditTextAgregarSaldo.removeTextChangedListener(this);
+                    EditTextAgregarSaldo.setText(formatear(quitarFormato(EditTextAgregarSaldo.getText().toString())));
+                    EditTextAgregarSaldo.setSelection(EditTextAgregarSaldo.getText().length());
+                    EditTextAgregarSaldo.addTextChangedListener(this);
+                }
+            }
+        });
+
+        EditTextReducirSaldo.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+                if (EditTextReducirSaldo.getText().toString().equals("")) {
+
+                } else {
+                    EditTextReducirSaldo.removeTextChangedListener(this);
+                    EditTextReducirSaldo.setText(formatear(quitarFormato(EditTextReducirSaldo.getText().toString())));
+                    EditTextReducirSaldo.setSelection(EditTextReducirSaldo.getText().length());
+                    EditTextReducirSaldo.addTextChangedListener(this);
+                }
+            }
+        });
+
         /**
          * Suma el saldo a algregar al saldo disponible
          */
@@ -106,8 +156,8 @@ public class PrincipalFragment extends Fragment {
                 if (EditTextAgregarSaldo.getText().toString().equals("")) {
                     Toast.makeText(getActivity(), "No hay saldo", Toast.LENGTH_SHORT).show();
                 } else {
-                    int nuevoDisponible = Integer.parseInt(saldoDisponible.getText().toString()) + Integer.parseInt(EditTextAgregarSaldo.getText().toString());
-                    saldoDisponible.setText(Integer.toString(nuevoDisponible));
+                    int nuevoDisponible = Integer.parseInt(quitarFormato(saldoDisponible.getText().toString())) + Integer.parseInt(quitarFormato(EditTextAgregarSaldo.getText().toString()));
+                    saldoDisponible.setText(formatear(Integer.toString(nuevoDisponible)));
                     EditTextAgregarSaldo.setText("");
                 }
             }
@@ -122,13 +172,13 @@ public class PrincipalFragment extends Fragment {
                 if (EditTextReducirSaldo.getText().toString().equals("")) {
                     Toast.makeText(getActivity(), "No hay saldo", Toast.LENGTH_SHORT).show();
                 } else {
-                    int nuevoDisponible = Integer.parseInt(saldoDisponible.getText().toString()) - Integer.parseInt(EditTextReducirSaldo.getText().toString());
+                    int nuevoDisponible = Integer.parseInt(quitarFormato(saldoDisponible.getText().toString())) - Integer.parseInt(quitarFormato(EditTextReducirSaldo.getText().toString()));
 
-                    if ( nuevoDisponible < 0){
+                    if (nuevoDisponible < 0){
                         Toast.makeText(getActivity(), "Saldo insuficiente", Toast.LENGTH_SHORT).show();
                     }
                     else {
-                        saldoDisponible.setText(Integer.toString(nuevoDisponible));
+                        saldoDisponible.setText(formatear(Integer.toString(nuevoDisponible)));
                         EditTextReducirSaldo.setText("");
                     }
                 }
