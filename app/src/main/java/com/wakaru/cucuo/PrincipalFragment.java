@@ -2,21 +2,21 @@ package com.wakaru.cucuo;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 
 
 /**
@@ -54,7 +54,7 @@ public class PrincipalFragment extends Fragment {
         String textoSaldoDisponible = settings.getString("saldoDisponible", null);
         int intSaldoDisponible = settings.getInt("saldoDisponibleValor",-1);
 
-        if (intSaldoDisponible == -1){
+        /*if (intSaldoDisponible == -1){
 
             intSaldoDisponible = -1;
             saldoDisponible.setText("");
@@ -62,10 +62,12 @@ public class PrincipalFragment extends Fragment {
         else {
             TextViewTituloSaldo.setVisibility(TextViewTituloSaldo.VISIBLE);
             saldoDisponible.setText(textoSaldoDisponible);
-        }
+        }*/
 
 
-
+        /**
+         * Cuando se apreta el boton, si no hay saldo ingresado, mantiene el titutlo del texto invisible, en caso que haber vuelve el titulo visible
+         */
         saldoDisponible.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -85,10 +87,18 @@ public class PrincipalFragment extends Fragment {
                 } else {
                     TextViewTituloSaldo.setVisibility(TextViewTituloSaldo.VISIBLE);
                     saldoDisponible.setHintTextColor(getResources().getColor(R.color.Color_Texto_Hint));
+
+                    saldoDisponible.removeTextChangedListener(this);
+                    saldoDisponible.setText(formatear(quitarFormato(saldoDisponible.getText().toString())));
+                    saldoDisponible.setSelection(saldoDisponible.getText().length());
+                    saldoDisponible.addTextChangedListener(this);
                 }
             }
         });
 
+        /**
+         * Suma el saldo a algregar al saldo disponible
+         */
         ButtonAgregarSaldo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -103,6 +113,9 @@ public class PrincipalFragment extends Fragment {
             }
         });
 
+        /**
+         * Resta el saldo indicado al saldo disponible
+         */
         ButtonRestarSaldo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -122,6 +135,9 @@ public class PrincipalFragment extends Fragment {
             }
         });
 
+        /**
+         * muestra con mensajes TOAST cuando se actualiza el saldo, o cuando esta vacio uina vez apretada la tecla ENTER
+         */
         saldoDisponible.setOnKeyListener(new View.OnKeyListener() {
 
             @Override
@@ -145,6 +161,9 @@ public class PrincipalFragment extends Fragment {
             }
         });
 
+        /**
+         * Si el campo de saldo no esta vacio, crea un intent con el valor del saldo disponible y inicia el activity simular compra
+         */
         simulCompra.setOnClickListener(new Button.OnClickListener() {
 
             @Override
@@ -156,9 +175,11 @@ public class PrincipalFragment extends Fragment {
                 }
 
                 else {
+                    String enviar;
                     saldoDisponible.setHintTextColor(getResources().getColor(R.color.Color_Texto_Hint));
                     Intent aSimular = new Intent(getActivity(), simularCompra.class);
-                    aSimular.putExtra("saldoDisponibleKey", saldoDisponible.getText().toString());
+                    enviar = quitarFormato(saldoDisponible.getText().toString());
+                    aSimular.putExtra("saldoDisponibleKey", enviar);
 
                     startActivity(aSimular);
                 }
@@ -166,6 +187,52 @@ public class PrincipalFragment extends Fragment {
         });
 
         return root;
+    }
+
+    public String quitarFormato(String saldoDisponible) {
+        String resultado = "";
+
+        if (saldoDisponible.equals("")) {
+
+            resultado = "";
+            return resultado;
+        } else {
+
+            if (saldoDisponible.contains("$") || saldoDisponible.contains(",") || saldoDisponible.contains(" ")) {
+                String[] temporal = saldoDisponible.split("[,  $]");
+
+                for (int i = 0; i < temporal.length; i++) {
+
+                    if (temporal[i].equals("")) {
+                        //nada
+                    } else {
+                        resultado = resultado + temporal[i];
+                    }
+                    System.out.println(temporal[i]);
+                }
+
+                return resultado;
+            } else {
+                return resultado = saldoDisponible;
+            }
+        }
+    }
+
+    private static String formatear(String saldo) {
+
+        if (saldo.equals("")) {
+            return "";
+        } else {
+            String saldoDisponibleIngresado = saldo;
+            double saldoDisponibleDouble = Double.parseDouble(saldoDisponibleIngresado);
+
+            DecimalFormatSymbols simbolo = new DecimalFormatSymbols();
+            simbolo.setDecimalSeparator('.');
+            simbolo.setGroupingSeparator(',');
+            DecimalFormat formateador = new DecimalFormat("$ ###,###", simbolo);
+
+            return formateador.format(saldoDisponibleDouble);
+        }
     }
 
     /**
