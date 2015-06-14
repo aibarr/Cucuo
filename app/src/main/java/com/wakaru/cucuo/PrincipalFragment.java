@@ -10,6 +10,7 @@ import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -52,10 +53,10 @@ public class PrincipalFragment extends Fragment {
         SharedPreferences settings = this.getActivity().getSharedPreferences(archivo, 0);
 
         String textoSaldoDisponible = settings.getString("saldoDisponible", "");
-        int intSaldoDisponible = settings.getInt("saldoDisponibleValor",-1);
+        int intSaldoDisponible = settings.getInt("saldoDisponibleValor", -1);
 
         if (textoSaldoDisponible.equals("")) {
-            saldoDisponible.setText("");
+            saldoDisponible.setText(R.string.saldo_vacio);
         } else {
             saldoDisponible.setText(textoSaldoDisponible);
             saldoDisponible.setText(textoSaldoDisponible);
@@ -89,7 +90,7 @@ public class PrincipalFragment extends Fragment {
                     saldoDisponible.setSelection(saldoDisponible.getText().length());
                     saldoDisponible.addTextChangedListener(this);
 
-                    if(formatear(quitarFormato(saldoDisponible.getText().toString())).equals("")){
+                    if (formatear(quitarFormato(saldoDisponible.getText().toString())).equals("")) {
                         TextViewTituloSaldo.setVisibility(TextViewTituloSaldo.INVISIBLE);
                     }
                 }
@@ -160,20 +161,23 @@ public class PrincipalFragment extends Fragment {
             public void onClick(View v) {
 
                 if (EditTextAgregarSaldo.getText().toString().equals("")) {
-                    Toast.makeText(getActivity(), "No hay saldo", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), R.string.no_hay_saldo, Toast.LENGTH_SHORT).show();
                 } else {
 
-                    if (saldoDisponible.getText().toString().equals("")){
+                    if (saldoDisponible.getText().toString().equals("")) {
                         int nuevoDisponible = 0 + Integer.parseInt(quitarFormato(EditTextAgregarSaldo.getText().toString()));
                         saldoDisponible.setText(formatear(Integer.toString(nuevoDisponible)));
                         EditTextAgregarSaldo.setText("");
-                    }
-                    else{
+                    } else {
                         int nuevoDisponible = Integer.parseInt(quitarFormato(saldoDisponible.getText().toString())) + Integer.parseInt(quitarFormato(EditTextAgregarSaldo.getText().toString()));
                         saldoDisponible.setText(formatear(Integer.toString(nuevoDisponible)));
                         EditTextAgregarSaldo.setText("");
                     }
+                    Toast.makeText(getActivity(), R.string.saldo_actualizado, Toast.LENGTH_SHORT).show();
                 }
+
+                InputMethodManager inputMethodManager = (InputMethodManager) getActivity().getSystemService(getActivity().INPUT_METHOD_SERVICE);
+                inputMethodManager.hideSoftInputFromWindow(getActivity().getCurrentFocus().getWindowToken(), 0);
             }
         });
 
@@ -184,18 +188,21 @@ public class PrincipalFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if (EditTextReducirSaldo.getText().toString().equals("") || saldoDisponible.getText().toString().equals("")) {
-                    Toast.makeText(getActivity(), "No hay saldo", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), R.string.no_hay_saldo, Toast.LENGTH_SHORT).show();
                 } else {
                     int nuevoDisponible = Integer.parseInt(quitarFormato(saldoDisponible.getText().toString())) - Integer.parseInt(quitarFormato(EditTextReducirSaldo.getText().toString()));
 
-                    if (nuevoDisponible < 0){
-                        Toast.makeText(getActivity(), "Saldo insuficiente", Toast.LENGTH_SHORT).show();
-                    }
-                    else {
+                    if (nuevoDisponible < 0) {
+                        Toast.makeText(getActivity(), R.string.saldo_insuficiente, Toast.LENGTH_SHORT).show();
+                    } else {
                         saldoDisponible.setText(formatear(Integer.toString(nuevoDisponible)));
                         EditTextReducirSaldo.setText("");
+                        Toast.makeText(getActivity(), R.string.saldo_actualizado, Toast.LENGTH_SHORT).show();
                     }
                 }
+
+                InputMethodManager inputMethodManager = (InputMethodManager) getActivity().getSystemService(getActivity().INPUT_METHOD_SERVICE);
+                inputMethodManager.hideSoftInputFromWindow(getActivity().getCurrentFocus().getWindowToken(), 0);
             }
         });
 
@@ -209,13 +216,13 @@ public class PrincipalFragment extends Fragment {
 
                 if ((event.getAction() == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER)) {
 
-                    if (saldoDisponible.getText().equals("")) {
+                    if (saldoDisponible.getText().toString().equals("")) {
 
-                        Toast.makeText(getActivity(), "Saldo actualizados vacio", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), R.string.saldo_actualizado, Toast.LENGTH_SHORT).show();
 
                     } else {
 
-                        Toast.makeText(getActivity(), "Saldo actualizado", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), R.string.saldo_actualizado, Toast.LENGTH_SHORT).show();
                     }
                     return true;
                 } else {
@@ -233,17 +240,18 @@ public class PrincipalFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                if (saldoDisponible.getText().toString().equals("")){
-                    Toast.makeText(getActivity(), "Saldo no valido", Toast.LENGTH_SHORT).show();
+                if (saldoDisponible.getText().toString().equals("")) {
+                    Toast.makeText(getActivity(), R.string.saldo_invalido, Toast.LENGTH_SHORT).show();
                     saldoDisponible.setHintTextColor(getResources().getColor(R.color.Saldo_No_Disponible));
-                }
-
-                else {
+                } else {
                     String enviar;
                     saldoDisponible.setHintTextColor(getResources().getColor(R.color.Color_Texto_Hint));
                     Intent aSimular = new Intent(getActivity(), simularCompra.class);
                     enviar = quitarFormato(saldoDisponible.getText().toString());
                     aSimular.putExtra("saldoDisponibleKey", enviar);
+
+                    InputMethodManager inputMethodManager = (InputMethodManager) getActivity().getSystemService(getActivity().INPUT_METHOD_SERVICE);
+                    inputMethodManager.hideSoftInputFromWindow(getActivity().getCurrentFocus().getWindowToken(), 0);
 
                     startActivity(aSimular);
                 }

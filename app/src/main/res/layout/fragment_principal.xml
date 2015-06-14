@@ -15,7 +15,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
         android:paddingBottom="8dp"
-        android:text="Saldo diponible"
+        android:text="@string/saldo_disponible"
         android:textColor="@color/accentColor"
         android:textSize="12dp"
         android:visibility="invisible" />
@@ -28,7 +28,8 @@
         android:layout_alignParentRight="true"
         android:layout_below="@+id/TextViewTituloSaldo"
         android:gravity="center"
-        android:hint="Saldo disponible"
+        android:hint="@string/saldo_disponible"
+        android:imeOptions="actionDone"
         android:inputType="number"
         android:paddingBottom="16dp"
         android:textColor="@color/Color_Texto"
@@ -51,10 +52,11 @@
         android:layout_alignRight="@+id/Space"
         android:layout_below="@+id/textViewSaldoDisponible"
         android:gravity="center_horizontal"
-        android:hint="Agregar saldo"
-        android:textSize="16dp"
+        android:hint="@string/agregar_saldo"
+        android:imeOptions="actionDone"
         android:inputType="number"
-        android:paddingBottom="16dp"/>
+        android:paddingBottom="16dp"
+        android:textSize="16dp" />
 
     <EditText
         android:id="@+id/EditTextReducirSaldo"
@@ -64,10 +66,11 @@
         android:layout_alignRight="@+id/textViewSaldoDisponible"
         android:layout_toRightOf="@+id/Space"
         android:gravity="center_horizontal"
-        android:hint="Restar saldo"
-        android:textSize="16dp"
+        android:hint="@string/restar_saldo"
+        android:imeOptions="actionDone"
         android:inputType="number"
-        android:paddingBottom="16dp"/>
+        android:paddingBottom="16dp"
+        android:textSize="16dp" />
 
     <Button
         android:id="@+id/ButtonAgregarSaldo"
@@ -78,7 +81,7 @@
         android:layout_below="@+id/EditTextAgregarSaldo"
         android:background="@drawable/botonagregar"
         android:elevation="10dp"
-        android:text="Agregar"
+        android:text="@string/boton_agregar"
         android:textSize="24dp" />
 
     <Button
@@ -90,7 +93,7 @@
         android:layout_alignRight="@+id/EditTextReducirSaldo"
         android:background="@drawable/botonrestar"
         android:elevation="10dp"
-        android:text="Restar"
+        android:text="@string/boton_restar"
         android:textSize="24dp" />
 
     <Button
@@ -101,7 +104,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="16dp"
         android:background="@drawable/boton"
-        android:text="Simular Compra"
+        android:text="@string/boton_simular_compra"
         android:textAllCaps="false"
         android:textColor="@color/Color_Texto_Boton"
         android:textSize="24dp" />

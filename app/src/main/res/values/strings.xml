@@ -3,6 +3,17 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_simular_compra">Simular Compra</string>
+    <string name="saldo_disponible">Saldo diponible</string>
+    <string name="agregar_saldo">Agregar saldo</string>
+    <string name="restar_saldo">Restar saldo</string>
+    <string name="boton_agregar">Agregar</string>
+    <string name="boton_restar">Restar</string>
+    <string name="boton_simular_compra">Simular compra</string>
+    <string name="saldo_vacio">""</string>
+    <string name="no_hay_saldo">No hay saldo</string>
+    <string name="saldo_insuficiente">Saldo insuficiente</string>
+    <string name="saldo_actualizado">Saldo actualizado</string>
+    <string name="saldo_invalido">Saldo invalido</string>
 
 <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
