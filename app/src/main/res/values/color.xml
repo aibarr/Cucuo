@@ -26,4 +26,5 @@
     <color name="PRESSED_RESTAR_STATE_COLOR">#B71C1C</color>
     <color name="FOCUSED_RESTAR_STATE_COLOR">#E57373</color>
     <color name="NORMAL_RESTAR_STATE_COLOR">#F44336</color>
+    <color name="background_claro_cucuo">#9575CD</color>
 </resources>
