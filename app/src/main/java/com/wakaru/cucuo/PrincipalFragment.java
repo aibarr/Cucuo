@@ -59,7 +59,7 @@ public class PrincipalFragment extends Fragment {
             saldoDisponible.setText(R.string.saldo_vacio);
         } else {
             saldoDisponible.setText(textoSaldoDisponible);
-            saldoDisponible.setText(textoSaldoDisponible);
+            TextViewTituloSaldo.setVisibility(TextViewTituloSaldo.VISIBLE);
         }
 
         /**
@@ -298,6 +298,7 @@ public class PrincipalFragment extends Fragment {
 
     /**
      * Funcion que da formato monetario en pesos al las cifras numeriocas
+     *
      * @param saldo corresponde al valor numerico en STRING
      * @return retorna un string con el valor numerico en formato monetario
      */

@@ -24,7 +24,7 @@
                 android:layout_toStartOf="@+id/editTextNumeroCuotas"
                 android:text="Precio"
                 android:textColor="@color/accentColor"
-                android:textSize="16dp"
+                android:textSize="12sp"
                 android:visibility="invisible" />
 
             <EditText
@@ -36,10 +36,11 @@
                 android:layout_marginTop="16dp"
                 android:layout_toLeftOf="@+id/editTextNumeroCuotas"
                 android:layout_toStartOf="@+id/editTextNumeroCuotas"
+                android:gravity="center_horizontal"
                 android:hint="Precio"
                 android:inputType="number"
                 android:textColorHint="@color/Color_Texto_Hint"
-                android:textSize="24dp" />
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/TexViewNumeroCuotas"
@@ -51,7 +52,7 @@
                 android:layout_alignStart="@+id/editTextNumeroCuotas"
                 android:text="Cuotas"
                 android:textColor="@color/accentColor"
-                android:textSize="16dp"
+                android:textSize="12sp"
                 android:visibility="invisible" />
 
             <EditText
@@ -66,7 +67,7 @@
                 android:hint="Cuotas"
                 android:inputType="number"
                 android:textColorHint="@color/Color_Texto_Hint"
-                android:textSize="24dp" />
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/textViewEtiquetaTarjeta"
@@ -81,7 +82,7 @@
                 android:paddingLeft="16dp"
                 android:paddingTop="8dp"
                 android:text="Tarjeta"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -96,7 +97,7 @@
                 android:paddingRight="16dp"
                 android:paddingTop="8dp"
                 android:text="Valor cuota"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 android:textStyle="bold" />
 
             <RelativeLayout
@@ -122,8 +123,8 @@
                     android:layout_marginLeft="16dp"
                     android:layout_toRightOf="@+id/imageViewCMR"
                     android:gravity="center"
-                    android:text="Tarjeta CMR"
-                    android:textSize="14sp"
+                    android:text="CMR"
+                    android:textSize="16sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -137,7 +138,7 @@
                     android:gravity="center"
                     android:text="0"
                     android:textColor="@color/Saldo_Disponible"
-                    android:textSize="18dp"
+                    android:textSize="@dimen/tamaño_valor_cuota"
                     android:textStyle="bold" />
 
                 <ImageView
@@ -158,8 +159,8 @@
                     android:layout_alignLeft="@+id/nombreCMR"
                     android:layout_alignTop="@+id/imageViewCMR2"
                     android:gravity="center"
-                    android:text="Tarjeta La Polar"
-                    android:textSize="14sp"
+                    android:text="La Polar"
+                    android:textSize="16sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -167,12 +168,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_alignBottom="@+id/imageViewCMR2"
-                    android:layout_alignLeft="@+id/textViewCuotaTarjeta1"
+                    android:layout_alignParentRight="true"
                     android:layout_alignTop="@+id/imageViewCMR2"
+                    android:layout_marginRight="16dp"
                     android:gravity="center"
                     android:text="0"
                     android:textColor="@color/Saldo_Disponible"
-                    android:textSize="18sp"
+                    android:textSize="@dimen/tamaño_valor_cuota"
                     android:textStyle="bold" />/>
 
                 <ImageView
@@ -192,8 +194,8 @@
                     android:layout_alignLeft="@+id/nombreBCI"
                     android:layout_alignTop="@+id/imageViewCMR3"
                     android:gravity="center"
-                    android:text="Tarjeta RIPLEY"
-                    android:textSize="14sp"
+                    android:text="RIPLEY"
+                    android:textSize="16sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -201,12 +203,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_alignBottom="@+id/imageViewCMR3"
-                    android:layout_alignLeft="@+id/textViewCuotaTarjeta2"
+                    android:layout_alignParentRight="true"
                     android:layout_alignTop="@+id/imageViewCMR3"
+                    android:layout_marginRight="16dp"
                     android:gravity="center"
                     android:text="0"
                     android:textColor="@color/Saldo_Disponible"
-                    android:textSize="18sp"
+                    android:textSize="@dimen/tamaño_valor_cuota"
                     android:textStyle="bold" />/>
 
                 <ImageView
@@ -227,8 +230,8 @@
                     android:layout_alignLeft="@+id/nombreMC"
                     android:layout_alignTop="@+id/imageViewCMR4"
                     android:gravity="center"
-                    android:text="Tarjeta BBVA"
-                    android:textSize="14sp"
+                    android:text="BBVA"
+                    android:textSize="16sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -236,12 +239,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_alignBottom="@+id/imageViewCMR4"
-                    android:layout_alignLeft="@+id/textViewCuotaTarjeta3"
+                    android:layout_alignParentRight="true"
                     android:layout_alignTop="@+id/imageViewCMR4"
+                    android:layout_marginRight="16dp"
                     android:gravity="center"
                     android:text="0"
                     android:textColor="@color/Saldo_Disponible"
-                    android:textSize="18sp"
+                    android:textSize="@dimen/tamaño_valor_cuota"
                     android:textStyle="bold" />
             </RelativeLayout>
         </RelativeLayout>

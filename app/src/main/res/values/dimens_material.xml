@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Tamaño de textos. -->
+    <dimen name="tamaño_valor_cuota">16sp</dimen>
     <!-- Preference activity, vertical padding for the header list -->
     <dimen name="preference_screen_header_vertical_padding_material">0dp</dimen>
 
