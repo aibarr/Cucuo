@@ -51,19 +51,15 @@ public class PrincipalFragment extends Fragment {
 
         SharedPreferences settings = this.getActivity().getSharedPreferences(archivo, 0);
 
-        String textoSaldoDisponible = settings.getString("saldoDisponible", null);
+        String textoSaldoDisponible = settings.getString("saldoDisponible", "");
         int intSaldoDisponible = settings.getInt("saldoDisponibleValor",-1);
 
-        /*if (intSaldoDisponible == -1){
-
-            intSaldoDisponible = -1;
+        if (textoSaldoDisponible.equals("")) {
             saldoDisponible.setText("");
-        }
-        else {
-            TextViewTituloSaldo.setVisibility(TextViewTituloSaldo.VISIBLE);
+        } else {
             saldoDisponible.setText(textoSaldoDisponible);
-        }*/
-
+            saldoDisponible.setText(textoSaldoDisponible);
+        }
 
         /**
          * Cuando se apreta el boton, si no hay saldo ingresado, mantiene el titutlo del texto invisible, en caso que haber vuelve el titulo visible
@@ -92,10 +88,17 @@ public class PrincipalFragment extends Fragment {
                     saldoDisponible.setText(formatear(quitarFormato(saldoDisponible.getText().toString())));
                     saldoDisponible.setSelection(saldoDisponible.getText().length());
                     saldoDisponible.addTextChangedListener(this);
+
+                    if(formatear(quitarFormato(saldoDisponible.getText().toString())).equals("")){
+                        TextViewTituloSaldo.setVisibility(TextViewTituloSaldo.INVISIBLE);
+                    }
                 }
             }
         });
 
+        /**
+         * Controla los eventos sobre el EditText de agregar saldo, aplica formato monetario mientras se edita
+         */
         EditTextAgregarSaldo.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -121,6 +124,9 @@ public class PrincipalFragment extends Fragment {
             }
         });
 
+        /**
+         * Controla los eventos sobre el EditText de reducir saldo, aplica formato monetario mientras se edita
+         */
         EditTextReducirSaldo.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -156,9 +162,17 @@ public class PrincipalFragment extends Fragment {
                 if (EditTextAgregarSaldo.getText().toString().equals("")) {
                     Toast.makeText(getActivity(), "No hay saldo", Toast.LENGTH_SHORT).show();
                 } else {
-                    int nuevoDisponible = Integer.parseInt(quitarFormato(saldoDisponible.getText().toString())) + Integer.parseInt(quitarFormato(EditTextAgregarSaldo.getText().toString()));
-                    saldoDisponible.setText(formatear(Integer.toString(nuevoDisponible)));
-                    EditTextAgregarSaldo.setText("");
+
+                    if (saldoDisponible.getText().toString().equals("")){
+                        int nuevoDisponible = 0 + Integer.parseInt(quitarFormato(EditTextAgregarSaldo.getText().toString()));
+                        saldoDisponible.setText(formatear(Integer.toString(nuevoDisponible)));
+                        EditTextAgregarSaldo.setText("");
+                    }
+                    else{
+                        int nuevoDisponible = Integer.parseInt(quitarFormato(saldoDisponible.getText().toString())) + Integer.parseInt(quitarFormato(EditTextAgregarSaldo.getText().toString()));
+                        saldoDisponible.setText(formatear(Integer.toString(nuevoDisponible)));
+                        EditTextAgregarSaldo.setText("");
+                    }
                 }
             }
         });
@@ -169,7 +183,7 @@ public class PrincipalFragment extends Fragment {
         ButtonRestarSaldo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (EditTextReducirSaldo.getText().toString().equals("")) {
+                if (EditTextReducirSaldo.getText().toString().equals("") || saldoDisponible.getText().toString().equals("")) {
                     Toast.makeText(getActivity(), "No hay saldo", Toast.LENGTH_SHORT).show();
                 } else {
                     int nuevoDisponible = Integer.parseInt(quitarFormato(saldoDisponible.getText().toString())) - Integer.parseInt(quitarFormato(EditTextReducirSaldo.getText().toString()));
@@ -239,6 +253,12 @@ public class PrincipalFragment extends Fragment {
         return root;
     }
 
+    /**
+     * Funcion que le quita el formato monetario al string, convirtiendolo en un string numerico sin formato
+     *
+     * @param saldoDisponible string numerico con formato monetario
+     * @return retorna un string sin formato, solo numeros
+     */
     public String quitarFormato(String saldoDisponible) {
         String resultado = "";
 
@@ -268,6 +288,11 @@ public class PrincipalFragment extends Fragment {
         }
     }
 
+    /**
+     * Funcion que da formato monetario en pesos al las cifras numeriocas
+     * @param saldo corresponde al valor numerico en STRING
+     * @return retorna un string con el valor numerico en formato monetario
+     */
     private static String formatear(String saldo) {
 
         if (saldo.equals("")) {
@@ -303,9 +328,5 @@ public class PrincipalFragment extends Fragment {
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-    }
-
-    public void guardarDatos(){
-
     }
 }

@@ -5,8 +5,8 @@
     <color name="primaryColorDark">#303F9F</color>
     <color name="accentColor">#F44336</color>
     <color name="white">#FFFFFF</color>
-    <color name="PRESSED_STATE_COLOR">#7E57C2</color>
-    <color name="FOCUSED_STATE_COLOR">#F44336</color>
+    <color name="PRESSED_STATE_COLOR">#311B92</color>
+    <color name="FOCUSED_STATE_COLOR">#9575CD</color>
     <color name="NORMAL_STATE_COLOR">#673AB7</color>
     <color name="Saldo_No_Disponible">#EF5350</color>
     <color name="Saldo_Disponible">#FFFFFF</color>
@@ -21,9 +21,9 @@
     <color name="Color_Texto_Tarjetas">#FFFFFF</color>
     <color name="Color_Hint_Texto_Seleccionado">#FFFFFF</color>
     <color name="PRESSED_AGREGAR_STATE_COLOR">#1B5E20</color>
-    <color name="FOCUSED_AGREGAR_STATE_COLOR">#7E57C2</color>
+    <color name="FOCUSED_AGREGAR_STATE_COLOR">#81C784</color>
     <color name="NORMAL_AGREGAR_STATE_COLOR">#4CAF50</color>
     <color name="PRESSED_RESTAR_STATE_COLOR">#B71C1C</color>
-    <color name="FOCUSED_RESTAR_STATE_COLOR">#7E57C2</color>
+    <color name="FOCUSED_RESTAR_STATE_COLOR">#E57373</color>
     <color name="NORMAL_RESTAR_STATE_COLOR">#F44336</color>
 </resources>
