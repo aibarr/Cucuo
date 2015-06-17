@@ -4,23 +4,22 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 import android.widget.Toolbar;
 
 
-public class simularCompra extends ActionBarActivity {
+public class simularCompra extends ActionBarActivity implements DialogoCompra.Comunicator{
 
     String saldoDisponible;
+    String respuesta;
     //private android.support.v7.widget.Toolbar toolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_simular_compra);
 
-        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        /*toolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.app_bar);
-        setSupportActionBar(toolbar);*/
-
         saldoDisponible = getIntent().getExtras().getString("saldoDisponibleKey");
+        respuesta = "vacia";
     }
 
     @Override
@@ -44,5 +43,11 @@ public class simularCompra extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onDialogMessage(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+        respuesta = message;
     }
 }

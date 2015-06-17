@@ -2,252 +2,100 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingTop="16dp"
     tools:context="com.wakaru.cucuo.simularCompraFragment">
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginLeft="16dp"
+    <TextView
+        android:id="@+id/TexViewPrecioDelProducto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_toLeftOf="@+id/editTextNumeroCuotas"
+        android:layout_toStartOf="@+id/editTextNumeroCuotas"
+        android:text="Precio"
+        android:textColor="@color/accentColor"
+        android:textSize="12sp"
+        android:visibility="invisible" />
+
+    <EditText
+        android:id="@+id/editTextPrecioProducto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="16dp"
         android:layout_marginTop="16dp"
-        android:paddingRight="16dp">
+        android:layout_toLeftOf="@+id/editTextNumeroCuotas"
+        android:layout_toStartOf="@+id/editTextNumeroCuotas"
+        android:gravity="center_horizontal"
+        android:hint="Precio"
+        android:inputType="number"
+        android:textColorHint="@color/Color_Texto_Hint"
+        android:textSize="16sp" />
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+    <TextView
+        android:id="@+id/TexViewNumeroCuotas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/TexViewPrecioDelProducto"
+        android:layout_alignLeft="@+id/editTextNumeroCuotas"
+        android:layout_alignParentRight="true"
+        android:layout_alignStart="@+id/editTextNumeroCuotas"
+        android:text="Cuotas"
+        android:textColor="@color/accentColor"
+        android:textSize="12sp"
+        android:visibility="invisible" />
 
-            <TextView
-                android:id="@+id/TexViewPrecioDelProducto"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_toLeftOf="@+id/editTextNumeroCuotas"
-                android:layout_toStartOf="@+id/editTextNumeroCuotas"
-                android:text="Precio"
-                android:textColor="@color/accentColor"
-                android:textSize="12sp"
-                android:visibility="invisible" />
+    <EditText
+        android:id="@+id/editTextNumeroCuotas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/editTextPrecioProducto"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="16dp"
+        android:gravity="center_horizontal"
+        android:hint="Cuotas"
+        android:inputType="number"
+        android:textColorHint="@color/Color_Texto_Hint"
+        android:textSize="16sp" />
 
-            <EditText
-                android:id="@+id/editTextPrecioProducto"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_marginBottom="16dp"
-                android:layout_marginTop="16dp"
-                android:layout_toLeftOf="@+id/editTextNumeroCuotas"
-                android:layout_toStartOf="@+id/editTextNumeroCuotas"
-                android:gravity="center_horizontal"
-                android:hint="Precio"
-                android:inputType="number"
-                android:textColorHint="@color/Color_Texto_Hint"
-                android:textSize="16sp" />
+    <TextView
+        android:id="@+id/textViewEtiquetaTarjeta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/editTextPrecioProducto"
+        android:layout_marginBottom="16dp"
+        android:background="@color/background_claro_cucuo"
+        android:paddingBottom="8dp"
+        android:paddingLeft="16dp"
+        android:paddingTop="8dp"
+        android:text="Tarjeta"
+        android:textSize="16sp"
+        android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/TexViewNumeroCuotas"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignBottom="@+id/TexViewPrecioDelProducto"
-                android:layout_alignLeft="@+id/editTextNumeroCuotas"
-                android:layout_alignParentRight="true"
-                android:layout_alignStart="@+id/editTextNumeroCuotas"
-                android:text="Cuotas"
-                android:textColor="@color/accentColor"
-                android:textSize="12sp"
-                android:visibility="invisible" />
+    <TextView
+        android:id="@+id/textViewEtiquetaTotal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/textViewEtiquetaTarjeta"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/editTextPrecioProducto"
+        android:layout_gravity="center_vertical"
+        android:paddingBottom="8dp"
+        android:paddingRight="16dp"
+        android:paddingTop="8dp"
+        android:text="Valor cuota"
+        android:textSize="16sp"
+        android:textStyle="bold" />
 
-            <EditText
-                android:id="@+id/editTextNumeroCuotas"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignBottom="@+id/editTextPrecioProducto"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:layout_marginTop="16dp"
-                android:gravity="center_horizontal"
-                android:hint="Cuotas"
-                android:inputType="number"
-                android:textColorHint="@color/Color_Texto_Hint"
-                android:textSize="16sp" />
-
-            <TextView
-                android:id="@+id/textViewEtiquetaTarjeta"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentRight="true"
-                android:layout_below="@+id/editTextPrecioProducto"
-                android:layout_marginBottom="16dp"
-                android:background="@color/background_claro_cucuo"
-                android:paddingBottom="8dp"
-                android:paddingLeft="16dp"
-                android:paddingTop="8dp"
-                android:text="Tarjeta"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/textViewEtiquetaTotal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignBottom="@+id/textViewEtiquetaTarjeta"
-                android:layout_alignParentRight="true"
-                android:layout_below="@+id/editTextPrecioProducto"
-                android:layout_gravity="center_vertical"
-                android:paddingBottom="8dp"
-                android:paddingRight="16dp"
-                android:paddingTop="8dp"
-                android:text="Valor cuota"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/textViewEtiquetaTarjeta"
-                android:background="@color/background_claro_cucuo">
-
-                <ImageView
-                    android:id="@+id/imageViewCMR"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginTop="16dp"
-                    android:src="@drawable/png_cmr" />
-
-                <TextView
-                    android:id="@+id/nombreCMR"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_alignBottom="@+id/imageViewCMR"
-                    android:layout_alignTop="@+id/imageViewCMR"
-                    android:layout_marginLeft="16dp"
-                    android:layout_toRightOf="@+id/imageViewCMR"
-                    android:gravity="center"
-                    android:text="CMR"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/textViewCuotaTarjeta1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_alignBottom="@+id/imageViewCMR"
-                    android:layout_alignParentRight="true"
-                    android:layout_alignTop="@+id/imageViewCMR"
-                    android:layout_marginRight="16dp"
-                    android:gravity="center"
-                    android:text="0"
-                    android:textColor="@color/Saldo_Disponible"
-                    android:textSize="@dimen/tamaño_valor_cuota"
-                    android:textStyle="bold" />
-
-                <ImageView
-                    android:id="@+id/imageViewCMR2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignLeft="@+id/imageViewCMR"
-                    android:layout_below="@+id/imageViewCMR"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="16dp"
-                    android:src="@drawable/png_lapolar" />
-
-                <TextView
-                    android:id="@+id/nombreBCI"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_alignBottom="@+id/imageViewCMR2"
-                    android:layout_alignLeft="@+id/nombreCMR"
-                    android:layout_alignTop="@+id/imageViewCMR2"
-                    android:gravity="center"
-                    android:text="La Polar"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/textViewCuotaTarjeta2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_alignBottom="@+id/imageViewCMR2"
-                    android:layout_alignParentRight="true"
-                    android:layout_alignTop="@+id/imageViewCMR2"
-                    android:layout_marginRight="16dp"
-                    android:gravity="center"
-                    android:text="0"
-                    android:textColor="@color/Saldo_Disponible"
-                    android:textSize="@dimen/tamaño_valor_cuota"
-                    android:textStyle="bold" />/>
-
-                <ImageView
-                    android:id="@+id/imageViewCMR3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignLeft="@+id/imageViewCMR2"
-                    android:layout_below="@+id/imageViewCMR2"
-                    android:layout_marginTop="16dp"
-                    android:src="@drawable/png_ripley" />
-
-                <TextView
-                    android:id="@+id/nombreMC"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_alignBottom="@+id/imageViewCMR3"
-                    android:layout_alignLeft="@+id/nombreBCI"
-                    android:layout_alignTop="@+id/imageViewCMR3"
-                    android:gravity="center"
-                    android:text="RIPLEY"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/textViewCuotaTarjeta3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_alignBottom="@+id/imageViewCMR3"
-                    android:layout_alignParentRight="true"
-                    android:layout_alignTop="@+id/imageViewCMR3"
-                    android:layout_marginRight="16dp"
-                    android:gravity="center"
-                    android:text="0"
-                    android:textColor="@color/Saldo_Disponible"
-                    android:textSize="@dimen/tamaño_valor_cuota"
-                    android:textStyle="bold" />/>
-
-                <ImageView
-                    android:id="@+id/imageViewCMR4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignLeft="@+id/imageViewCMR3"
-                    android:layout_below="@+id/imageViewCMR3"
-                    android:layout_marginBottom="16dp"
-                    android:layout_marginTop="16dp"
-                    android:src="@drawable/png_bbva" />
-
-                <TextView
-                    android:id="@+id/nombreJumbo"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_alignBottom="@+id/imageViewCMR4"
-                    android:layout_alignLeft="@+id/nombreMC"
-                    android:layout_alignTop="@+id/imageViewCMR4"
-                    android:gravity="center"
-                    android:text="BBVA"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/textViewCuotaTarjeta4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_alignBottom="@+id/imageViewCMR4"
-                    android:layout_alignParentRight="true"
-                    android:layout_alignTop="@+id/imageViewCMR4"
-                    android:layout_marginRight="16dp"
-                    android:gravity="center"
-                    android:text="0"
-                    android:textColor="@color/Saldo_Disponible"
-                    android:textSize="@dimen/tamaño_valor_cuota"
-                    android:textStyle="bold" />
-            </RelativeLayout>
-        </RelativeLayout>
-    </ScrollView>
+    <ListView
+        android:id="@+id/ListViewListaTarjetas"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textViewEtiquetaTarjeta"></ListView>
 </RelativeLayout>

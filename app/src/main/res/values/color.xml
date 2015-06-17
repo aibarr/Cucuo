@@ -9,7 +9,7 @@
     <color name="FOCUSED_STATE_COLOR">#9575CD</color>
     <color name="NORMAL_STATE_COLOR">#673AB7</color>
     <color name="Saldo_No_Disponible">#EF5350</color>
-    <color name="Saldo_Disponible">#FFFFFF</color>
+    <color name="Saldo_Disponible">#4CAF50</color>
     <color name="Precio_Valido">#000000</color>
     <color name="Cuota_Valido">#000000</color>
     <color name="Precio_No_Valido">#F44336</color>

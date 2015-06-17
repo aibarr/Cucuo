@@ -15,6 +15,20 @@
     <string name="saldo_actualizado">Saldo actualizado</string>
     <string name="saldo_invalido">Saldo invalido</string>
 
+    <string-array name="titulos_tarjetas">
+        <item>Tarjeta CMR</item>
+        <item>Tarjeta Lapolar</item>
+        <item>Tarjeta Ripley</item>
+        <item>Tarjeta BBVA</item>
+    </string-array>
+
+    <string-array name="valor_cuotas_iniciales">
+        <item>$ 0</item>
+        <item>$ 0</item>
+        <item>$ 0</item>
+        <item>$ 0</item>
+    </string-array>
+
 <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
