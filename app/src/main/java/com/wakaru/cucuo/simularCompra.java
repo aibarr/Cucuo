@@ -2,6 +2,8 @@ package com.wakaru.cucuo;
 
 import android.app.FragmentManager;
 import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -34,7 +36,9 @@ public class simularCompra extends ActionBarActivity implements DialogoCompra.Co
     private TextView TexViewNumeroCuotas, TexViewPrecioDelProducto;
     private EditText Edit_Text_Cuotas;
     private ListView ListViewListaTarjetas;
+    private String saldoDisponible;
     String costo_total;
+    public static final String archivo = "MyPrefsFile";
 
     //private android.support.v7.widget.Toolbar toolbar;
     @Override
@@ -48,10 +52,12 @@ public class simularCompra extends ActionBarActivity implements DialogoCompra.Co
         Edit_Text_Cuotas = (EditText) findViewById(R.id.editTextNumeroCuotas);
         ListViewListaTarjetas = (ListView) findViewById(R.id.ListViewListaTarjetas);
 
+        SharedPreferences settings = this.getSharedPreferences(archivo, 0);
+
         final VivzAdapter adapter1 = new VivzAdapter(this);
         ListViewListaTarjetas.setAdapter(adapter1);
 
-        final String saldoDisponible = getIntent().getExtras().getString("saldoDisponibleKey");
+        saldoDisponible = getIntent().getExtras().getString("saldoDisponibleKey");
 
         /**
          * Maneja la seleccion de una fila en el ListView, cuando es valida la compra llama al dialogo para realizar la compra
@@ -63,12 +69,14 @@ public class simularCompra extends ActionBarActivity implements DialogoCompra.Co
 
                 costo_total = adapter2.list.get(position).valor_cuota;
 
-                if (Integer.parseInt(quitarFormato(costo_total)) > Integer.parseInt(saldoDisponible)){
-                    Toast.makeText(getApplicationContext(), "Saldo insuficiente", Toast.LENGTH_SHORT).show();
-                }
+                if (costo_total.equals("$ 0") || precioProducto.getText().toString().equals("")) {
 
-                else{
-                    showDialog(view);
+                } else {
+                    if (Integer.parseInt(quitarFormato(costo_total)) > Integer.parseInt(saldoDisponible)) {
+                        Toast.makeText(getApplicationContext(), "Saldo insuficiente", Toast.LENGTH_SHORT).show();
+                    } else {
+                        showDialog(view);
+                    }
                 }
             }
         });
@@ -235,6 +243,7 @@ public class simularCompra extends ActionBarActivity implements DialogoCompra.Co
 
     /**
      * Procedimiento encargado de recibir el mensaje del Dialogo de compra
+     *
      * @param v
      */
     public void showDialog(View v) {
@@ -246,6 +255,7 @@ public class simularCompra extends ActionBarActivity implements DialogoCompra.Co
 
     /**
      * Funcion que le quita el formato monetario al string, convirtiendolo en un string numerico sin formato
+     *
      * @param saldoDisponible string numerico con formato monetario
      * @return retorna un string sin formato, solo numeros
      */
@@ -305,7 +315,7 @@ public class simularCompra extends ActionBarActivity implements DialogoCompra.Co
      * Procedimiento que asgina el valor de cada cuota
      *
      * @param saldoDisponible corresponde al valor del saldo disponible para comprar
-     * @param adapter1 adaptador que sera seteado en la ListView
+     * @param adapter1        adaptador que sera seteado en la ListView
      */
     public void calcularCuotas(String saldoDisponible, VivzAdapter adapter1) {
 
@@ -476,10 +486,19 @@ public class simularCompra extends ActionBarActivity implements DialogoCompra.Co
     public void onDialogMessage(String message) {
 
 
-        if(message.equals("Compra aceptada")){
-            Toast.makeText(this,"Compra registrada", Toast.LENGTH_SHORT).show();
-        }
-        else{
+        if (message.equals("Compra aceptada")) {
+            Toast.makeText(this, "Compra registrada", Toast.LENGTH_SHORT).show();
+
+            String saldoDiponibleFinal = String.valueOf(Integer.parseInt(saldoDisponible) - Integer.parseInt(quitarFormato(costo_total)));
+            SharedPreferences settings = this.getSharedPreferences(archivo, 0);
+            SharedPreferences.Editor editor = settings.edit();
+            editor.putString("saldoDisponible", formatear(saldoDiponibleFinal));
+            editor.putInt("saldoDisponibleValor", Integer.parseInt(saldoDisponible));
+            editor.commit();
+
+            Intent aSimular = new Intent(getApplicationContext(), Principal.class);
+            startActivity(aSimular);
+        } else {
 
         }
     }

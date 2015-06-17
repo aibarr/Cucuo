@@ -2,9 +2,7 @@ package com.wakaru.cucuo;
 
 import android.app.Activity;
 import android.app.DialogFragment;
-import android.app.Fragment;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,11 +37,10 @@ public class DialogoCompra extends DialogFragment implements View.OnClickListene
         ButtonAceptarComprar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (EditTextNombreCompra.getText().toString().equals("")){
+                if (EditTextNombreCompra.getText().toString().equals("")) {
                     Toast.makeText(getActivity().getApplicationContext(), "Ingresa nombre", Toast.LENGTH_SHORT).show();
 
-                }
-                else{
+                } else {
                     comunicator.onDialogMessage("Compra aceptada");
                     dismiss();
                 }
@@ -61,7 +58,7 @@ public class DialogoCompra extends DialogFragment implements View.OnClickListene
         return view;
     }
 
-    interface Comunicator{
+    interface Comunicator {
         public void onDialogMessage(String message);
     }
 

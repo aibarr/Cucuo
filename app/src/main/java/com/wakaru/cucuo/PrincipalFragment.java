@@ -240,7 +240,7 @@ public class PrincipalFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                if (saldoDisponible.getText().toString().equals("")) {
+                if (saldoDisponible.getText().toString().equals("") || saldoDisponible.getText().toString().equals("$ 0")) {
                     Toast.makeText(getActivity(), R.string.saldo_invalido, Toast.LENGTH_SHORT).show();
                     saldoDisponible.setHintTextColor(getResources().getColor(R.color.Saldo_No_Disponible));
                 } else {
