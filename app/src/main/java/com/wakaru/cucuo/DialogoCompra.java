@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 /**
  * Created by Joel on 16/06/2015.
@@ -38,8 +39,14 @@ public class DialogoCompra extends DialogFragment implements View.OnClickListene
         ButtonAceptarComprar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                comunicator.onDialogMessage("Compra aceptada");
-                dismiss();
+                if (EditTextNombreCompra.getText().toString().equals("")){
+                    Toast.makeText(getActivity().getApplicationContext(), "Ingresa nombre", Toast.LENGTH_SHORT).show();
+
+                }
+                else{
+                    comunicator.onDialogMessage("Compra aceptada");
+                    dismiss();
+                }
             }
         });
 
@@ -47,7 +54,6 @@ public class DialogoCompra extends DialogFragment implements View.OnClickListene
             @Override
             public void onClick(View v) {
                 dismiss();
-                comunicator.onDialogMessage("Compra cancelada");
             }
         });
 

@@ -16,10 +16,10 @@
     <string name="saldo_invalido">Saldo invalido</string>
 
     <string-array name="titulos_tarjetas">
-        <item>Tarjeta CMR</item>
-        <item>Tarjeta Lapolar</item>
-        <item>Tarjeta Ripley</item>
-        <item>Tarjeta BBVA</item>
+        <item>CMR</item>
+        <item>LaPolar</item>
+        <item>Ripley</item>
+        <item>BBVA</item>
     </string-array>
 
     <string-array name="valor_cuotas_iniciales">

@@ -6,7 +6,7 @@
 
     <TextView
         android:id="@+id/TextViewTextCompra"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignRight="@+id/EditTextNombreCompra"
         android:layout_alignLeft="@+id/EditTextNombreCompra"
@@ -18,10 +18,12 @@
 
     <EditText
         android:id="@+id/EditTextNombreCompra"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/TextViewTextCompra"
-        android:hint="Ponle nombre a tu compra" />
+        android:hint="Ponle nombre a tu compra"
+        android:gravity="center_horizontal"
+        android:inputType="text"/>
 
     <Button
         android:id="@+id/ButtonAceptarComprar"
