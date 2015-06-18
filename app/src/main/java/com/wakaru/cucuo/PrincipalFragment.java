@@ -25,16 +25,15 @@ import java.text.DecimalFormatSymbols;
  */
 public class PrincipalFragment extends Fragment {
 
-    Button simulCompra;
-    Button ButtonHistorial;
-    EditText saldoDisponible;
-    EditText EditTextAgregarSaldo;
-    EditText EditTextReducirSaldo;
-    TextView TextViewTituloSaldo;
-    int saldoDisponibleValor;
-    Button ButtonAgregarSaldo;
-    Button ButtonRestarSaldo;
-    public static final String archivo = "MyPrefsFile";
+    private Button simulCompra;
+    private Button ButtonHistorial;
+    private EditText saldoDisponible;
+    private EditText EditTextAgregarSaldo;
+    private EditText EditTextReducirSaldo;
+    private TextView TextViewTituloSaldo;
+    private Button ButtonAgregarSaldo;
+    private Button ButtonRestarSaldo;
+    private String archivo = "MyPrefsFile";
 
     public PrincipalFragment() {
     }
@@ -55,7 +54,6 @@ public class PrincipalFragment extends Fragment {
         SharedPreferences settings = this.getActivity().getSharedPreferences(archivo, 0);
 
         String textoSaldoDisponible = settings.getString("saldoDisponible", "");
-        int intSaldoDisponible = settings.getInt("saldoDisponibleValor", -1);
 
         if (textoSaldoDisponible.equals("")) {
             saldoDisponible.setText(R.string.saldo_vacio);
@@ -119,6 +117,7 @@ public class PrincipalFragment extends Fragment {
                 if (EditTextAgregarSaldo.getText().toString().equals("")) {
 
                 } else {
+
                     EditTextAgregarSaldo.removeTextChangedListener(this);
                     EditTextAgregarSaldo.setText(formatear(quitarFormato(EditTextAgregarSaldo.getText().toString())));
                     EditTextAgregarSaldo.setSelection(EditTextAgregarSaldo.getText().length());
@@ -147,6 +146,7 @@ public class PrincipalFragment extends Fragment {
                 if (EditTextReducirSaldo.getText().toString().equals("")) {
 
                 } else {
+
                     EditTextReducirSaldo.removeTextChangedListener(this);
                     EditTextReducirSaldo.setText(formatear(quitarFormato(EditTextReducirSaldo.getText().toString())));
                     EditTextReducirSaldo.setSelection(EditTextReducirSaldo.getText().length());
@@ -163,14 +163,19 @@ public class PrincipalFragment extends Fragment {
             public void onClick(View v) {
 
                 if (EditTextAgregarSaldo.getText().toString().equals("")) {
+
                     Toast.makeText(getActivity(), R.string.no_hay_saldo, Toast.LENGTH_SHORT).show();
+
                 } else {
 
                     if (saldoDisponible.getText().toString().equals("")) {
+
                         int nuevoDisponible = 0 + Integer.parseInt(quitarFormato(EditTextAgregarSaldo.getText().toString()));
                         saldoDisponible.setText(formatear(Integer.toString(nuevoDisponible)));
                         EditTextAgregarSaldo.setText("");
+
                     } else {
+
                         int nuevoDisponible = Integer.parseInt(quitarFormato(saldoDisponible.getText().toString())) + Integer.parseInt(quitarFormato(EditTextAgregarSaldo.getText().toString()));
                         saldoDisponible.setText(formatear(Integer.toString(nuevoDisponible)));
                         EditTextAgregarSaldo.setText("");
@@ -189,14 +194,21 @@ public class PrincipalFragment extends Fragment {
         ButtonRestarSaldo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 if (EditTextReducirSaldo.getText().toString().equals("") || saldoDisponible.getText().toString().equals("")) {
+
                     Toast.makeText(getActivity(), R.string.no_hay_saldo, Toast.LENGTH_SHORT).show();
+
                 } else {
+
                     int nuevoDisponible = Integer.parseInt(quitarFormato(saldoDisponible.getText().toString())) - Integer.parseInt(quitarFormato(EditTextReducirSaldo.getText().toString()));
 
                     if (nuevoDisponible < 0) {
+
                         Toast.makeText(getActivity(), R.string.saldo_insuficiente, Toast.LENGTH_SHORT).show();
+
                     } else {
+
                         saldoDisponible.setText(formatear(Integer.toString(nuevoDisponible)));
                         EditTextReducirSaldo.setText("");
                         Toast.makeText(getActivity(), R.string.saldo_actualizado, Toast.LENGTH_SHORT).show();
@@ -243,9 +255,12 @@ public class PrincipalFragment extends Fragment {
             public void onClick(View v) {
 
                 if (saldoDisponible.getText().toString().equals("") || saldoDisponible.getText().toString().equals("$ 0")) {
+
                     Toast.makeText(getActivity(), R.string.saldo_invalido, Toast.LENGTH_SHORT).show();
                     saldoDisponible.setHintTextColor(getResources().getColor(R.color.Saldo_No_Disponible));
+
                 } else {
+
                     String enviar;
                     saldoDisponible.setHintTextColor(getResources().getColor(R.color.Color_Texto_Hint));
                     Intent aSimular = new Intent(getActivity(), simularCompra.class);
@@ -260,7 +275,7 @@ public class PrincipalFragment extends Fragment {
             }
         });
 
-        ButtonHistorial.setOnClickListener(new Button.OnClickListener(){
+        ButtonHistorial.setOnClickListener(new Button.OnClickListener() {
 
             @Override
             public void onClick(View v) {
@@ -316,8 +331,11 @@ public class PrincipalFragment extends Fragment {
     private static String formatear(String saldo) {
 
         if (saldo.equals("")) {
+
             return "";
+
         } else {
+
             String saldoDisponibleIngresado = saldo;
             double saldoDisponibleDouble = Double.parseDouble(saldoDisponibleIngresado);
 
@@ -340,7 +358,6 @@ public class PrincipalFragment extends Fragment {
         SharedPreferences settings = this.getActivity().getSharedPreferences(archivo, 0);
         SharedPreferences.Editor editor = settings.edit();
         editor.putString("saldoDisponible", saldoDisponible.getText().toString());
-        editor.putInt("saldoDisponibleValor", saldoDisponibleValor);
 
         editor.commit();
     }

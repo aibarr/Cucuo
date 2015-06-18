@@ -3,47 +3,56 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/TextViewHistorialNombre"
-        android:layout_margin="16dp"
+    <ImageView
+        android:id="@+id/ImageViewFotoHistorial"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
+        android:layout_margin="@dimen/margin_left_right_top_bottom"
+        android:src="@drawable/png_cmr" />
+
+    <TextView
+        android:id="@+id/TextViewHistorialNombre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/ImageViewFotoHistorial"
+        android:layout_alignTop="@+id/ImageViewFotoHistorial"
+        android:layout_toRightOf="@+id/ImageViewFotoHistorial"
         android:text="Nombre compra"
         android:textColor="@color/Color_Texto"
-        android:textAppearance="?android:attr/textAppearanceLarge"/>
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/TextViewFechaCompra"
-        android:layout_marginRight="16dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/TextViewHistorialNombre"
-        android:layout_alignBottom="@+id/TextViewHistorialNombre"
         android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/TextViewHistorialNombre"
+        android:layout_marginRight="@dimen/margin_left_right_top_bottom"
+        android:layout_toRightOf="@+id/TextViewHistorialNombre"
         android:gravity="right"
         android:text="10/09/15"
         android:textColor="@color/Color_Texto_Hint"
-        android:textSize="16sp"/>
+        android:textSize="16sp" />
 
     <TextView
         android:id="@+id/TextViewValorTotal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/ImageViewFotoHistorial"
+        android:layout_alignRight="@+id/TextViewFechaCompra"
+        android:layout_below="@+id/ImageViewFotoHistorial"
         android:text="Costo total: $ 125.000"
-        android:textColor="@color/Color_Texto"
-        android:layout_below="@+id/TextViewHistorialNombre"
-        android:layout_alignLeft="@+id/TextViewHistorialNombre"
-        android:layout_alignRight="@+id/TextViewFechaCompra"/>
+        android:textColor="@color/Color_Texto" />
 
     <TextView
         android:id="@+id/TextViewValorCuota"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="12 cuotas de $ 25.000"
-        android:textColor="@color/Color_Texto"
+        android:layout_alignLeft="@+id/TextViewValorTotal"
+        android:layout_alignRight="@+id/TextViewFechaCompra"
         android:layout_below="@+id/TextViewValorTotal"
-        android:layout_alignLeft="@+id/TextViewHistorialNombre"
-        android:layout_alignRight="@+id/TextViewFechaCompra"/>
+        android:layout_marginBottom="@dimen/margin_left_right_top_bottom"
+        android:text="12 cuotas de $ 25.000"
+        android:textColor="@color/Color_Texto" />
 
 </RelativeLayout>

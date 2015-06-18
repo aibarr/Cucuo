@@ -14,6 +14,17 @@
     <string name="saldo_insuficiente">Saldo insuficiente</string>
     <string name="saldo_actualizado">Saldo actualizado</string>
     <string name="saldo_invalido">Saldo invalido</string>
+    <string name="titulo_dialogo">Confirmar compra</string>
+    <string name="hint_dialogo">Ponle nombre a tu compra</string>
+    <string name="aceptar_dialogo">Aceptar</string>
+    <string name="cancelar_dialogo">Cancelar</string>
+    <string name="boton_historial">Historial</string>
+    <string name="sin_compras_historial">No se han realizado compras</string>
+    <string name="simularcompra_hint_superior">Precio</string>
+    <string name="simularcompra_hint_precio">Precio</string>
+    <string name="simularcompra_hint_cuotas">Cuotas</string>
+    <string name="simularcompra_titulo_tarjetas">Tarjeta</string>
+    <string name="simularcompra_titulo_valorcuotas">Valor cuota</string>
 
     <string-array name="titulos_tarjetas">
         <item>CMR</item>

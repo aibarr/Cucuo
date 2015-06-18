@@ -7,7 +7,7 @@
         android:id="@+id/ImageViewImageViewTarjeta"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
+        android:layout_margin="@dimen/margin_left_right_top_bottom"
         android:src="@drawable/png_cmr" />
 
     <TextView
@@ -30,7 +30,7 @@
         android:layout_alignBottom="@+id/ImageViewImageViewTarjeta"
         android:layout_alignParentRight="true"
         android:layout_alignTop="@+id/ImageViewImageViewTarjeta"
-        android:layout_marginRight="16dp"
+        android:layout_marginRight="@dimen/margin_left_right_top_bottom"
         android:gravity="center_vertical"
         android:text="$ 0"
         android:textColor="@color/Color_Texto"

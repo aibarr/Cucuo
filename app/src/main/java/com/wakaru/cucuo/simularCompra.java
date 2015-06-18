@@ -26,7 +26,9 @@ import android.widget.Toast;
 
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 
@@ -37,11 +39,13 @@ public class simularCompra extends ActionBarActivity implements DialogoCompra.Co
     private EditText Edit_Text_Cuotas;
     private ListView ListViewListaTarjetas;
     private String saldoDisponible;
-    String costo_total;
-    public static final String archivo = "MyPrefsFile";
-    public static final String archivoHistorial = "MyPrefsFile";
+    private String id_image;
+    private String costo_total;
+    private String archivo = "MyPrefsFile";
+    private String archivoHistorial = "MyPrefsFile";
+    private VivzAdapter adapter1;
+    private VivzAdapter adapter2;
 
-    //private android.support.v7.widget.Toolbar toolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,9 +57,7 @@ public class simularCompra extends ActionBarActivity implements DialogoCompra.Co
         Edit_Text_Cuotas = (EditText) findViewById(R.id.editTextNumeroCuotas);
         ListViewListaTarjetas = (ListView) findViewById(R.id.ListViewListaTarjetas);
 
-        SharedPreferences settings = this.getSharedPreferences(archivo, 0);
-
-        final VivzAdapter adapter1 = new VivzAdapter(this);
+        adapter1 = new VivzAdapter(this);
         ListViewListaTarjetas.setAdapter(adapter1);
 
         saldoDisponible = getIntent().getExtras().getString("saldoDisponibleKey");
@@ -66,16 +68,32 @@ public class simularCompra extends ActionBarActivity implements DialogoCompra.Co
         ListViewListaTarjetas.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                VivzAdapter adapter2 = (VivzAdapter) ListViewListaTarjetas.getAdapter();
 
+                adapter2 = (VivzAdapter) ListViewListaTarjetas.getAdapter();
                 costo_total = adapter2.list.get(position).valor_cuota;
+                id_image = String.valueOf(adapter2.list.get(position).image);
 
-                if (costo_total.equals("$ 0") || precioProducto.getText().toString().equals("")) {
+                if (costo_total.equals("$ 0") || precioProducto.getText().toString().equals("") || Edit_Text_Cuotas.getText().toString().equals("")) {
+
+                    if(precioProducto.getText().toString().equals("")){
+
+                        Toast.makeText(getApplicationContext(), "Precio invalido", Toast.LENGTH_SHORT).show();
+                    }
+
+                    if(Edit_Text_Cuotas.getText().toString().equals("")){
+
+                        Toast.makeText(getApplicationContext(), "Cuota invalida", Toast.LENGTH_SHORT).show();
+                    }
+
 
                 } else {
+
                     if (Integer.parseInt(quitarFormato(costo_total)) > Integer.parseInt(saldoDisponible)) {
+
                         Toast.makeText(getApplicationContext(), "Saldo insuficiente", Toast.LENGTH_SHORT).show();
+
                     } else {
+
                         showDialog(view);
                     }
                 }
@@ -86,6 +104,7 @@ public class simularCompra extends ActionBarActivity implements DialogoCompra.Co
          * Maneja el Hint del EditText de las cuotas, si hay un valor escrito hace visible el Hint superior, en caso contrario lo oculta
          */
         Edit_Text_Cuotas.addTextChangedListener(new TextWatcher() {
+
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -100,9 +119,20 @@ public class simularCompra extends ActionBarActivity implements DialogoCompra.Co
             public void afterTextChanged(Editable s) {
 
                 if (Edit_Text_Cuotas.getText().toString().equals("")) {
+
                     TexViewNumeroCuotas.setVisibility(TexViewNumeroCuotas.INVISIBLE);
+
                 } else {
+
                     TexViewNumeroCuotas.setVisibility(TexViewNumeroCuotas.VISIBLE);
+
+                    if (Integer.parseInt(Edit_Text_Cuotas.getText().toString()) < 2){
+
+                        Edit_Text_Cuotas.removeTextChangedListener(this);
+                        Edit_Text_Cuotas.setText("2");
+                        Edit_Text_Cuotas.setSelection(Edit_Text_Cuotas.getText().length());
+                        Edit_Text_Cuotas.addTextChangedListener(this);
+                    }
                 }
             }
         });
@@ -111,6 +141,7 @@ public class simularCompra extends ActionBarActivity implements DialogoCompra.Co
          * Se encarga de aplicar el formato monetario sobre el precio del producto a medida que se va cambiando el texto
          */
         precioProducto.addTextChangedListener(new TextWatcher() {
+
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -125,8 +156,11 @@ public class simularCompra extends ActionBarActivity implements DialogoCompra.Co
             public void afterTextChanged(Editable s) {
 
                 if (precioProducto.getText().toString().equals("")) {
+
                     TexViewPrecioDelProducto.setVisibility(TexViewPrecioDelProducto.INVISIBLE);
+
                 } else {
+
                     TexViewPrecioDelProducto.setVisibility(TexViewPrecioDelProducto.VISIBLE);
                     precioProducto.setHintTextColor(getResources().getColor(R.color.Color_Texto_Hint));
 
@@ -136,6 +170,7 @@ public class simularCompra extends ActionBarActivity implements DialogoCompra.Co
                     precioProducto.addTextChangedListener(this);
 
                     if (formatear(quitarFormato(precioProducto.getText().toString())).equals("")) {
+
                         TexViewPrecioDelProducto.setVisibility(TexViewPrecioDelProducto.INVISIBLE);
                     }
                 }
@@ -148,7 +183,9 @@ public class simularCompra extends ActionBarActivity implements DialogoCompra.Co
         Edit_Text_Cuotas.setOnKeyListener(new View.OnKeyListener() {
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
+
                 if ((event.getAction() == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER)) {
+
                     if (precioProducto.getText().toString().equals("")) {
 
                         Toast.makeText(getApplicationContext(), "Precio invalido", Toast.LENGTH_SHORT).show();
@@ -170,9 +207,11 @@ public class simularCompra extends ActionBarActivity implements DialogoCompra.Co
                             inputMethodManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
 
                             return true;
+
                         } else {
 
                             Edit_Text_Cuotas.setHintTextColor(getResources().getColor(R.color.Cuota_Valido));
+
                             if (Integer.parseInt(Edit_Text_Cuotas.getText().toString()) <= 1) {
 
                                 Toast.makeText(getApplicationContext(), "Minimo 2 cuotas", Toast.LENGTH_SHORT).show();
@@ -210,7 +249,9 @@ public class simularCompra extends ActionBarActivity implements DialogoCompra.Co
 
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
+
                 if ((event.getAction() == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER)) {
+
                     if (precioProducto.getText().toString().equals("")) {
 
                         Toast.makeText(getApplicationContext(), "Precio invalido", Toast.LENGTH_SHORT).show();
@@ -225,8 +266,6 @@ public class simularCompra extends ActionBarActivity implements DialogoCompra.Co
 
                     } else {
 
-                        //Toast.makeText(getApplicationContext(), "Precio actualizado", Toast.LENGTH_SHORT).show();
-
                         precioProducto.setHintTextColor(getResources().getColor(R.color.Precio_Valido));
                         calcularCuotas(saldoDisponible, adapter1);
 
@@ -235,7 +274,9 @@ public class simularCompra extends ActionBarActivity implements DialogoCompra.Co
 
                         return true;
                     }
+
                 } else {
+
                     return false;
                 }
             }
@@ -261,6 +302,7 @@ public class simularCompra extends ActionBarActivity implements DialogoCompra.Co
      * @return retorna un string sin formato, solo numeros
      */
     public String quitarFormato(String saldoDisponible) {
+
         String resultado = "";
 
         if (saldoDisponible.equals("")) {
@@ -329,14 +371,12 @@ public class simularCompra extends ActionBarActivity implements DialogoCompra.Co
 
             double valorCuota = 0;
 
-
             colores_valores.add(verificarSaldo(saldoDisponible, valorCuota));
             nombre_tarjetas.add("CMR");
             valores_cuotas.add(formatear(String.valueOf(valorCuota)));
             images_valores.add(R.drawable.png_cmr);
 
             valorCuota = 0;
-
 
             colores_valores.add(verificarSaldo(saldoDisponible, valorCuota));
             nombre_tarjetas.add("LaPolar");
@@ -345,14 +385,12 @@ public class simularCompra extends ActionBarActivity implements DialogoCompra.Co
 
             valorCuota = 0;
 
-
             colores_valores.add(verificarSaldo(saldoDisponible, valorCuota));
             nombre_tarjetas.add("Ripley");
             valores_cuotas.add(formatear(String.valueOf(valorCuota)));
             images_valores.add(R.drawable.png_ripley);
 
             valorCuota = 0;
-
 
             colores_valores.add(verificarSaldo(saldoDisponible, valorCuota));
             nombre_tarjetas.add("BBVA");
@@ -365,6 +403,7 @@ public class simularCompra extends ActionBarActivity implements DialogoCompra.Co
         } else {
 
             if (Edit_Text_Cuotas.getText().toString().equals("")) {
+
                 Edit_Text_Cuotas.setText("2");
             }
 
@@ -375,14 +414,12 @@ public class simularCompra extends ActionBarActivity implements DialogoCompra.Co
 
             double valorCuota = metodoFrances(precioProducto, 0.04, Integer.parseInt(Edit_Text_Cuotas.getText().toString()));
 
-
             colores_valores.add(verificarSaldo(saldoDisponible, valorCuota));
             nombre_tarjetas.add("CMR");
             valores_cuotas.add(formatear(String.valueOf(valorCuota)));
             images_valores.add(R.drawable.png_cmr);
 
             valorCuota = metodoFrances(precioProducto, 0.13, Integer.parseInt(Edit_Text_Cuotas.getText().toString()));
-
 
             colores_valores.add(verificarSaldo(saldoDisponible, valorCuota));
             nombre_tarjetas.add("LaPolar");
@@ -391,14 +428,12 @@ public class simularCompra extends ActionBarActivity implements DialogoCompra.Co
 
             valorCuota = metodoFrances(precioProducto, 0.09, Integer.parseInt(Edit_Text_Cuotas.getText().toString()));
 
-
             colores_valores.add(verificarSaldo(saldoDisponible, valorCuota));
             nombre_tarjetas.add("Ripley");
             valores_cuotas.add(formatear(String.valueOf(valorCuota)));
             images_valores.add(R.drawable.png_ripley);
 
             valorCuota = metodoFrances(precioProducto, 0.20, Integer.parseInt(Edit_Text_Cuotas.getText().toString()));
-
 
             colores_valores.add(verificarSaldo(saldoDisponible, valorCuota));
             nombre_tarjetas.add("BBVA");
@@ -426,14 +461,17 @@ public class simularCompra extends ActionBarActivity implements DialogoCompra.Co
             precioProducto.setHintTextColor(getResources().getColor(R.color.Precio_No_Valido));
 
             return 0;
+
         } else {
 
             if (numeroCuotas == 0) {
 
                 return 0;
+
             } else if (numeroCuotas == 1) {
 
                 return Integer.parseInt(valorPrecioProducto.getText().toString());
+
             } else {
 
                 double valorCuota = Integer.parseInt(quitarFormato(valorPrecioProducto.getText().toString())) * ((tasaInteres * Math.pow(1 + tasaInteres, numeroCuotas)) / (Math.pow(1 + tasaInteres, numeroCuotas) - 1));
@@ -445,17 +483,18 @@ public class simularCompra extends ActionBarActivity implements DialogoCompra.Co
 
     /**
      * Determina el color del texto de la cuota, rojo si se pasa del saldo disponible, negro si no se pasa del saldo disponible
-     *
      * @param saldoDisponibleString Valor del saldo disponible, esta tomando desde PrincipalFragment
      * @param valorCuotaDouble      Valor que tiene la cuota, despues de calcular su valor
      * @return retorna un strint cn color rojo o verde
      */
     public int verificarSaldo(String saldoDisponibleString, double valorCuotaDouble) {
+
         if (Integer.parseInt(saldoDisponibleString) < valorCuotaDouble) {
-            //return "#EF5350";
+
             return getResources().getColor(R.color.Saldo_No_Disponible);
+
         } else {
-            //int color = ;
+
             return getResources().getColor(R.color.Saldo_Disponible);
         }
     }
@@ -477,6 +516,7 @@ public class simularCompra extends ActionBarActivity implements DialogoCompra.Co
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+
             return true;
         }
 
@@ -485,7 +525,6 @@ public class simularCompra extends ActionBarActivity implements DialogoCompra.Co
 
     @Override
     public void onDialogMessage(String message) {
-
 
         if (!message.equals("")) {
             Toast.makeText(this, "Compra registrada", Toast.LENGTH_SHORT).show();
@@ -497,12 +536,19 @@ public class simularCompra extends ActionBarActivity implements DialogoCompra.Co
             editor.putString("saldoDisponible", formatear(saldoDiponibleFinal));
             editor.commit();
 
+            Calendar c = Calendar.getInstance();
+            System.out.println("Current time => " + c.getTime());
+
+            SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yyyy");
+            String formattedDate = df.format(c.getTime());
+
             SharedPreferences settingsHistorial = this.getSharedPreferences(archivoHistorial, 0);
 
             String datos_nombres_compras = settingsHistorial.getString("nombres_compras", "");
             String datos_valores_totales = settingsHistorial.getString("valores_totales", "");
             String datos_valores_cuotas = settingsHistorial.getString("valores_cuotas", "");
             String datos_fechas = settingsHistorial.getString("fechas", "");
+            String datos_images = settingsHistorial.getString("images", "");
 
             if (datos_nombres_compras.equals("")) {
 
@@ -511,23 +557,27 @@ public class simularCompra extends ActionBarActivity implements DialogoCompra.Co
                 editorHistorial.putString("nombres_compras", message);
                 editorHistorial.putString("valores_totales", "Total: " + precioProducto.getText().toString());
                 editorHistorial.putString("valores_cuotas", Edit_Text_Cuotas.getText().toString() + " " + "Cuotas de " + costo_total);
-                editorHistorial.putString("fechas", "fecha");
+                editorHistorial.putString("fechas", formattedDate);
+                editorHistorial.putString("images", id_image);
 
                 editorHistorial.commit();
+
             } else {
+
                 SharedPreferences.Editor editorHistorial = settingsHistorial.edit();
 
-                editorHistorial.putString("nombres_compras", datos_nombres_compras + "-" + message);
-                editorHistorial.putString("valores_totales", datos_valores_totales + "-" + "Total: " + precioProducto.getText().toString());
-                editorHistorial.putString("valores_cuotas", datos_valores_cuotas + "-" + Edit_Text_Cuotas.getText().toString() + " " + "Cuotas de " + costo_total);
-                editorHistorial.putString("fechas", datos_fechas + "-" + "fecha");
+                editorHistorial.putString("nombres_compras", datos_nombres_compras + "/" + message);
+                editorHistorial.putString("valores_totales", datos_valores_totales + "/" + "Total: " + precioProducto.getText().toString());
+                editorHistorial.putString("valores_cuotas", datos_valores_cuotas + "/" + Edit_Text_Cuotas.getText().toString() + " " + "Cuotas de " + costo_total);
+                editorHistorial.putString("fechas", datos_fechas + "/" + formattedDate);
+                editorHistorial.putString("images", datos_images + "/" + id_image);
 
                 editorHistorial.commit();
             }
 
-
             Intent aSimular = new Intent(getApplicationContext(), Principal.class);
             startActivity(aSimular);
+
         } else {
 
         }
@@ -571,14 +621,17 @@ class VivzAdapter extends BaseAdapter {
         int[] color = {c.getResources().getColor(R.color.Color_Texto), c.getResources().getColor(R.color.Color_Texto), c.getResources().getColor(R.color.Color_Texto), c.getResources().getColor(R.color.Color_Texto)};
 
         for (int i = 0; i < 4; i++) {
+
             list.add(new SingleRow(titulos_tarjetas[i], valor_cuotas[i], images[i], color[i]));
         }
     }
 
     VivzAdapter(Context c, List<Integer> colors, List<String> nombre_tarjetas, List<String> valor_cuotas, List<Integer> images) {
+
         context = c;
         list = new ArrayList<SingleRow>();
         for (int i = 0; i < 4; i++) {
+
             list.add(new SingleRow(nombre_tarjetas.get(i), valor_cuotas.get(i), images.get(i), colors.get(i)));
         }
     }

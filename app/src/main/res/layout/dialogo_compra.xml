@@ -2,17 +2,17 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp">
+    android:padding="@dimen/margin_left_right_top_bottom">
 
     <TextView
         android:id="@+id/TextViewTextCompra"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/EditTextNombreCompra"
         android:layout_alignLeft="@+id/EditTextNombreCompra"
+        android:layout_alignRight="@+id/EditTextNombreCompra"
         android:gravity="center_horizontal"
-        android:paddingBottom="16dp"
-        android:text="Confirmar compra"
+        android:paddingBottom="@dimen/margin_left_right_top_bottom"
+        android:text="@string/titulo_dialogo"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="@color/Color_Texto" />
 
@@ -21,9 +21,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/TextViewTextCompra"
-        android:hint="Ponle nombre a tu compra"
+        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
         android:gravity="center_horizontal"
-        android:inputType="text"/>
+        android:hint="@string/hint_dialogo"
+        android:inputType="textCapWords" />
 
     <Button
         android:id="@+id/ButtonAceptarComprar"
@@ -31,7 +32,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/EditTextNombreCompra"
         android:background="@drawable/botonagregar"
-        android:text="Aceptar" />
+        android:text="@string/aceptar_dialogo" />
 
     <Button
         android:id="@+id/ButtonCancelarCompra"
@@ -41,6 +42,6 @@
         android:layout_alignRight="@+id/EditTextNombreCompra"
         android:layout_toRightOf="@+id/ButtonAceptarComprar"
         android:background="@drawable/botonrestar"
-        android:text="Cancelar" />
+        android:text="@string/cancelar_dialogo" />
 
 </RelativeLayout>

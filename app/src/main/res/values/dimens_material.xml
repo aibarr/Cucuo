@@ -2,6 +2,10 @@
 <resources>
     <!-- Tamaño de textos. -->
     <dimen name="tamaño_valor_cuota">16sp</dimen>
+    <!-- Tamaño de paddings y margenes. -->
+    <dimen name="margin_left_right_top_bottom">16dp</dimen>
+    <dimen name="mitad_margin_left_right_top_bottom">8dp</dimen>
+    <dimen name="null_margin">0dp</dimen>
     <!-- Preference activity, vertical padding for the header list -->
     <dimen name="preference_screen_header_vertical_padding_material">0dp</dimen>
 
