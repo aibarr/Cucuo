@@ -41,7 +41,7 @@ public class DialogoCompra extends DialogFragment implements View.OnClickListene
                     Toast.makeText(getActivity().getApplicationContext(), "Ingresa nombre", Toast.LENGTH_SHORT).show();
 
                 } else {
-                    comunicator.onDialogMessage("Compra aceptada");
+                    comunicator.onDialogMessage(EditTextNombreCompra.getText().toString());
                     dismiss();
                 }
             }

@@ -39,6 +39,7 @@ public class simularCompra extends ActionBarActivity implements DialogoCompra.Co
     private String saldoDisponible;
     String costo_total;
     public static final String archivo = "MyPrefsFile";
+    public static final String archivoHistorial = "MyPrefsFile";
 
     //private android.support.v7.widget.Toolbar toolbar;
     @Override
@@ -486,15 +487,44 @@ public class simularCompra extends ActionBarActivity implements DialogoCompra.Co
     public void onDialogMessage(String message) {
 
 
-        if (message.equals("Compra aceptada")) {
+        if (!message.equals("")) {
             Toast.makeText(this, "Compra registrada", Toast.LENGTH_SHORT).show();
 
             String saldoDiponibleFinal = String.valueOf(Integer.parseInt(saldoDisponible) - Integer.parseInt(quitarFormato(costo_total)));
             SharedPreferences settings = this.getSharedPreferences(archivo, 0);
             SharedPreferences.Editor editor = settings.edit();
+
             editor.putString("saldoDisponible", formatear(saldoDiponibleFinal));
-            editor.putInt("saldoDisponibleValor", Integer.parseInt(saldoDisponible));
             editor.commit();
+
+            SharedPreferences settingsHistorial = this.getSharedPreferences(archivoHistorial, 0);
+
+            String datos_nombres_compras = settingsHistorial.getString("nombres_compras", "");
+            String datos_valores_totales = settingsHistorial.getString("valores_totales", "");
+            String datos_valores_cuotas = settingsHistorial.getString("valores_cuotas", "");
+            String datos_fechas = settingsHistorial.getString("fechas", "");
+
+            if (datos_nombres_compras.equals("")) {
+
+                SharedPreferences.Editor editorHistorial = settingsHistorial.edit();
+
+                editorHistorial.putString("nombres_compras", message);
+                editorHistorial.putString("valores_totales", "Total: " + precioProducto.getText().toString());
+                editorHistorial.putString("valores_cuotas", Edit_Text_Cuotas.getText().toString() + " " + "Cuotas de " + costo_total);
+                editorHistorial.putString("fechas", "fecha");
+
+                editorHistorial.commit();
+            } else {
+                SharedPreferences.Editor editorHistorial = settingsHistorial.edit();
+
+                editorHistorial.putString("nombres_compras", datos_nombres_compras + "-" + message);
+                editorHistorial.putString("valores_totales", datos_valores_totales + "-" + "Total: " + precioProducto.getText().toString());
+                editorHistorial.putString("valores_cuotas", datos_valores_cuotas + "-" + Edit_Text_Cuotas.getText().toString() + " " + "Cuotas de " + costo_total);
+                editorHistorial.putString("fechas", datos_fechas + "-" + "fecha");
+
+                editorHistorial.commit();
+            }
+
 
             Intent aSimular = new Intent(getApplicationContext(), Principal.class);
             startActivity(aSimular);

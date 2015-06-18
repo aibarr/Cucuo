@@ -26,6 +26,7 @@ import java.text.DecimalFormatSymbols;
 public class PrincipalFragment extends Fragment {
 
     Button simulCompra;
+    Button ButtonHistorial;
     EditText saldoDisponible;
     EditText EditTextAgregarSaldo;
     EditText EditTextReducirSaldo;
@@ -45,6 +46,7 @@ public class PrincipalFragment extends Fragment {
         simulCompra = (Button) root.findViewById(R.id.simulCompra);
         ButtonAgregarSaldo = (Button) root.findViewById(R.id.ButtonAgregarSaldo);
         ButtonRestarSaldo = (Button) root.findViewById(R.id.ButtonRestarSaldo);
+        ButtonHistorial = (Button) root.findViewById(R.id.ButtonHistorial);
         saldoDisponible = (EditText) root.findViewById(R.id.textViewSaldoDisponible);
         EditTextAgregarSaldo = (EditText) root.findViewById(R.id.EditTextAgregarSaldo);
         EditTextReducirSaldo = (EditText) root.findViewById(R.id.EditTextReducirSaldo);
@@ -255,6 +257,15 @@ public class PrincipalFragment extends Fragment {
 
                     startActivity(aSimular);
                 }
+            }
+        });
+
+        ButtonHistorial.setOnClickListener(new Button.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+                Intent Historial = new Intent(getActivity(), Historial.class);
+                startActivity(Historial);
             }
         });
 

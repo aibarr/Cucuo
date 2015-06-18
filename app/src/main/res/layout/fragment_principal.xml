@@ -108,4 +108,17 @@
         android:textAllCaps="false"
         android:textColor="@color/Color_Texto_Boton"
         android:textSize="24dp" />
+
+    <Button
+        android:id="@+id/ButtonHistorial"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/simulCompra"
+        android:layout_alignRight="@+id/simulCompra"
+        android:layout_alignLeft="@+id/simulCompra"
+        android:background="@drawable/boton"
+        android:text="Historial"
+        android:textAllCaps="false"
+        android:textColor="@color/Color_Texto_Boton"
+        android:textSize="24dp"/>
 </RelativeLayout>

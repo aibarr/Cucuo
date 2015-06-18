@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/TextViewHistorialNombre"
+        android:layout_margin="16dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:text="Nombre compra"
+        android:textColor="@color/Color_Texto"
+        android:textAppearance="?android:attr/textAppearanceLarge"/>
+
+    <TextView
+        android:id="@+id/TextViewFechaCompra"
+        android:layout_marginRight="16dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/TextViewHistorialNombre"
+        android:layout_alignBottom="@+id/TextViewHistorialNombre"
+        android:layout_alignParentRight="true"
+        android:gravity="right"
+        android:text="10/09/15"
+        android:textColor="@color/Color_Texto_Hint"
+        android:textSize="16sp"/>
+
+    <TextView
+        android:id="@+id/TextViewValorTotal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Costo total: $ 125.000"
+        android:textColor="@color/Color_Texto"
+        android:layout_below="@+id/TextViewHistorialNombre"
+        android:layout_alignLeft="@+id/TextViewHistorialNombre"
+        android:layout_alignRight="@+id/TextViewFechaCompra"/>
+
+    <TextView
+        android:id="@+id/TextViewValorCuota"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="12 cuotas de $ 25.000"
+        android:textColor="@color/Color_Texto"
+        android:layout_below="@+id/TextViewValorTotal"
+        android:layout_alignLeft="@+id/TextViewHistorialNombre"
+        android:layout_alignRight="@+id/TextViewFechaCompra"/>
+
+</RelativeLayout>
