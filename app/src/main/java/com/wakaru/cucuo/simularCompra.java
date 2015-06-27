@@ -84,8 +84,12 @@ public class simularCompra extends ActionBarActivity implements DialogoCompra.Co
 
                         Toast.makeText(getApplicationContext(), "Cuota invalida", Toast.LENGTH_SHORT).show();
                     }
+                    else{
+                        if (Integer.parseInt(Edit_Text_Cuotas.getText().toString()) == 1) {
 
-
+                            Toast.makeText(getApplicationContext(), "2 cuotas min", Toast.LENGTH_SHORT).show();
+                        }
+                    }
                 } else {
 
                     if (Integer.parseInt(quitarFormato(costo_total)) > Integer.parseInt(saldoDisponible)) {
