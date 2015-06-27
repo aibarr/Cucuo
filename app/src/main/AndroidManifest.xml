@@ -9,6 +9,7 @@
         android:theme="@style/AppTheme" >
         <activity
             android:name=".Principal"
+            android:screenOrientation="portrait"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,6 +20,7 @@
         <activity
             android:name=".simularCompra"
             android:label="@string/title_activity_simular_compra"
+            android:screenOrientation="portrait"
             android:parentActivityName=".Principal" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -27,6 +29,7 @@
         <activity
             android:name=".Historial"
             android:label="@string/title_activity_historial"
+            android:screenOrientation="portrait"
             android:parentActivityName=".Principal" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

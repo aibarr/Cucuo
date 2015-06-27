@@ -75,12 +75,12 @@ public class simularCompra extends ActionBarActivity implements DialogoCompra.Co
 
                 if (costo_total.equals("$ 0") || precioProducto.getText().toString().equals("") || Edit_Text_Cuotas.getText().toString().equals("")) {
 
-                    if(precioProducto.getText().toString().equals("")){
+                    if (precioProducto.getText().toString().equals("")) {
 
                         Toast.makeText(getApplicationContext(), "Precio invalido", Toast.LENGTH_SHORT).show();
                     }
 
-                    if(Edit_Text_Cuotas.getText().toString().equals("")){
+                    if (Edit_Text_Cuotas.getText().toString().equals("")) {
 
                         Toast.makeText(getApplicationContext(), "Cuota invalida", Toast.LENGTH_SHORT).show();
                     }
@@ -125,14 +125,25 @@ public class simularCompra extends ActionBarActivity implements DialogoCompra.Co
                 } else {
 
                     TexViewNumeroCuotas.setVisibility(TexViewNumeroCuotas.VISIBLE);
+                    Edit_Text_Cuotas.removeTextChangedListener(this);
 
-                    if (Integer.parseInt(Edit_Text_Cuotas.getText().toString()) < 2){
+                    if (Integer.parseInt(Edit_Text_Cuotas.getText().toString()) < 1) {
 
-                        Edit_Text_Cuotas.removeTextChangedListener(this);
+                        //Edit_Text_Cuotas.removeTextChangedListener(this);
                         Edit_Text_Cuotas.setText("2");
                         Edit_Text_Cuotas.setSelection(Edit_Text_Cuotas.getText().length());
-                        Edit_Text_Cuotas.addTextChangedListener(this);
+
+                        calcularCuotas(saldoDisponible, adapter1);
+
+                        //Edit_Text_Cuotas.addTextChangedListener(this);
+
+                    } else {
+                        Edit_Text_Cuotas.setHintTextColor(getResources().getColor(R.color.Cuota_Valido));
+
+                        calcularCuotas(saldoDisponible, adapter1);
+
                     }
+                    Edit_Text_Cuotas.addTextChangedListener(this);
                 }
             }
         });
@@ -158,6 +169,7 @@ public class simularCompra extends ActionBarActivity implements DialogoCompra.Co
                 if (precioProducto.getText().toString().equals("")) {
 
                     TexViewPrecioDelProducto.setVisibility(TexViewPrecioDelProducto.INVISIBLE);
+                    calcularCuotas(saldoDisponible, adapter1);
 
                 } else {
 
@@ -172,6 +184,12 @@ public class simularCompra extends ActionBarActivity implements DialogoCompra.Co
                     if (formatear(quitarFormato(precioProducto.getText().toString())).equals("")) {
 
                         TexViewPrecioDelProducto.setVisibility(TexViewPrecioDelProducto.INVISIBLE);
+                        calcularCuotas(saldoDisponible, adapter1);
+
+                    } else {
+                        precioProducto.setHintTextColor(getResources().getColor(R.color.Precio_Valido));
+
+                        calcularCuotas(saldoDisponible, adapter1);
                     }
                 }
             }
@@ -470,7 +488,7 @@ public class simularCompra extends ActionBarActivity implements DialogoCompra.Co
 
             } else if (numeroCuotas == 1) {
 
-                return Integer.parseInt(valorPrecioProducto.getText().toString());
+                return Integer.parseInt(quitarFormato(valorPrecioProducto.getText().toString()));
 
             } else {
 
@@ -483,6 +501,7 @@ public class simularCompra extends ActionBarActivity implements DialogoCompra.Co
 
     /**
      * Determina el color del texto de la cuota, rojo si se pasa del saldo disponible, negro si no se pasa del saldo disponible
+     *
      * @param saldoDisponibleString Valor del saldo disponible, esta tomando desde PrincipalFragment
      * @param valorCuotaDouble      Valor que tiene la cuota, despues de calcular su valor
      * @return retorna un strint cn color rojo o verde
