@@ -46,10 +46,10 @@ public class DialogoCompra extends DialogFragment implements View.OnClickListene
             public void onClick(View v) {
                 if (EditTextNombreCompra.getText().toString().equals("") || (actualCaracteres > maxCaracteres)) {
 
-                    if (EditTextNombreCompra.getText().toString().equals("")){
+                    if (EditTextNombreCompra.getText().toString().equals("")) {
                         Toast.makeText(getActivity().getApplicationContext(), "Ingresa nombre", Toast.LENGTH_SHORT).show();
                     }
-                    if ((actualCaracteres > maxCaracteres)){
+                    if ((actualCaracteres > maxCaracteres)) {
                         Toast.makeText(getActivity().getApplicationContext(), "Nombre muy largo", Toast.LENGTH_SHORT).show();
                     }
 
@@ -94,16 +94,16 @@ public class DialogoCompra extends DialogFragment implements View.OnClickListene
 
     /**
      * Funcion que retorna el color del texto de acuerdo a la cantidad de caracteres introducidas
+     *
      * @param actualCaracteres cantidad de caracteres escritos
-     * @param maxCaracteres cantidad maxima de caracteres soportados
+     * @param maxCaracteres    cantidad maxima de caracteres soportados
      * @return retorna el color (negro si no se pasa el maximo, rojo si se pasa)
      */
     private int revCaracteres(int actualCaracteres, int maxCaracteres) {
 
-        if (actualCaracteres > maxCaracteres){
+        if (actualCaracteres > maxCaracteres) {
             return getResources().getColor(R.color.Saldo_No_Disponible);
-        }
-        else{
+        } else {
             return getResources().getColor(R.color.Saldo_Disponible);
         }
     }

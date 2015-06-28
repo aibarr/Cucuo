@@ -133,14 +133,16 @@ public class simularCompra extends ActionBarActivity implements DialogoCompra.Co
 
                     if (Integer.parseInt(Edit_Text_Cuotas.getText().toString()) < 1) {
 
-                        //Edit_Text_Cuotas.removeTextChangedListener(this);
                         Edit_Text_Cuotas.setText("2");
                         Edit_Text_Cuotas.setSelection(Edit_Text_Cuotas.getText().length());
 
                         calcularCuotas(saldoDisponible, adapter1);
 
-                        //Edit_Text_Cuotas.addTextChangedListener(this);
+                    } else if (Integer.parseInt(Edit_Text_Cuotas.getText().toString()) > 48) {
+                        Edit_Text_Cuotas.setText("48");
+                        Edit_Text_Cuotas.setSelection(Edit_Text_Cuotas.getText().length());
 
+                        calcularCuotas(saldoDisponible, adapter1);
                     } else {
 
                         Edit_Text_Cuotas.setHintTextColor(getResources().getColor(R.color.Cuota_Valido));
