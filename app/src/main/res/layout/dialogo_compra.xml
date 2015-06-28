@@ -32,6 +32,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/EditTextNombreCompra"
         android:background="@drawable/botonagregar"
+        android:layout_marginTop="16dp"
         android:text="@string/aceptar_dialogo" />
 
     <Button
@@ -43,5 +44,17 @@
         android:layout_toRightOf="@+id/ButtonAceptarComprar"
         android:background="@drawable/botonrestar"
         android:text="@string/cancelar_dialogo" />
+
+    <TextView
+        android:id="@+id/TextViewMaxCaracteres"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/EditTextNombreCompra"
+        android:paddingBottom="8dp"
+        android:text="0 / 10"
+        android:textColor="@color/Saldo_Disponible"
+        android:textSize="12sp"
+        android:visibility="visible" />
 
 </RelativeLayout>
