@@ -45,6 +45,7 @@ public class simularCompra extends ActionBarActivity implements DialogoCompra.Co
     private String archivoHistorial = "MyPrefsFile";
     private VivzAdapter adapter1;
     private VivzAdapter adapter2;
+    private int maxCuotas, minCuotas;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +57,8 @@ public class simularCompra extends ActionBarActivity implements DialogoCompra.Co
         TexViewPrecioDelProducto = (TextView) findViewById(R.id.TexViewPrecioDelProducto);
         Edit_Text_Cuotas = (EditText) findViewById(R.id.editTextNumeroCuotas);
         ListViewListaTarjetas = (ListView) findViewById(R.id.ListViewListaTarjetas);
+        maxCuotas = 48;
+        minCuotas = 2;
 
         adapter1 = new VivzAdapter(this);
         ListViewListaTarjetas.setAdapter(adapter1);
@@ -131,15 +134,15 @@ public class simularCompra extends ActionBarActivity implements DialogoCompra.Co
                     TexViewNumeroCuotas.setVisibility(TexViewNumeroCuotas.VISIBLE);
                     Edit_Text_Cuotas.removeTextChangedListener(this);
 
-                    if (Integer.parseInt(Edit_Text_Cuotas.getText().toString()) < 1) {
+                    if (Integer.parseInt(Edit_Text_Cuotas.getText().toString()) < (minCuotas-1)) {
 
-                        Edit_Text_Cuotas.setText("2");
+                        Edit_Text_Cuotas.setText(String.valueOf(minCuotas));
                         Edit_Text_Cuotas.setSelection(Edit_Text_Cuotas.getText().length());
 
                         calcularCuotas(saldoDisponible, adapter1);
 
-                    } else if (Integer.parseInt(Edit_Text_Cuotas.getText().toString()) > 48) {
-                        Edit_Text_Cuotas.setText("48");
+                    } else if (Integer.parseInt(Edit_Text_Cuotas.getText().toString()) > maxCuotas) {
+                        Edit_Text_Cuotas.setText(String.valueOf(maxCuotas));
                         Edit_Text_Cuotas.setSelection(Edit_Text_Cuotas.getText().length());
 
                         calcularCuotas(saldoDisponible, adapter1);
