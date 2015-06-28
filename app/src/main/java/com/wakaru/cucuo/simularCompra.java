@@ -497,7 +497,7 @@ public class simularCompra extends ActionBarActivity implements DialogoCompra.Co
 
             } else {
 
-                double valorCuota = valorCuota = Integer.parseInt(quitarFormato(valorPrecioProducto.getText().toString())) * (tasaInteres * Math.pow(1 + tasaInteres, numeroCuotas)) / (Math.pow(1 + tasaInteres, numeroCuotas) - 1);
+                double valorCuota = Integer.parseInt(quitarFormato(valorPrecioProducto.getText().toString())) * (tasaInteres * Math.pow(1 + tasaInteres, numeroCuotas)) / (Math.pow(1 + tasaInteres, numeroCuotas) - 1);
 
                 precioProducto.setHintTextColor(getResources().getColor(R.color.Precio_Valido));
                 return valorCuota;
