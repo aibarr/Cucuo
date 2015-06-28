@@ -28,9 +28,9 @@
 
     <string-array name="titulos_tarjetas">
         <item>CMR</item>
-        <item>LaPolar</item>
-        <item>Ripley</item>
-        <item>BBVA</item>
+        <item>Santander</item>
+        <item>BCI</item>
+        <item>B Estado</item>
     </string-array>
 
     <string-array name="valor_cuotas_iniciales">

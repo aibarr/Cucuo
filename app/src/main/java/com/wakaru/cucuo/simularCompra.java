@@ -73,7 +73,7 @@ public class simularCompra extends ActionBarActivity implements DialogoCompra.Co
                 costo_total = adapter2.list.get(position).valor_cuota;
                 id_image = String.valueOf(adapter2.list.get(position).image);
 
-                if (costo_total.equals("$ 0") || precioProducto.getText().toString().equals("") || Edit_Text_Cuotas.getText().toString().equals("")) {
+                if (costo_total.equals("$ 0") || precioProducto.getText().toString().equals("") || Edit_Text_Cuotas.getText().toString().equals("") || Edit_Text_Cuotas.getText().toString().equals("1")) {
 
                     if (precioProducto.getText().toString().equals("")) {
 
@@ -84,12 +84,12 @@ public class simularCompra extends ActionBarActivity implements DialogoCompra.Co
 
                         Toast.makeText(getApplicationContext(), "Cuota invalida", Toast.LENGTH_SHORT).show();
                     }
-                    else{
-                        if (Integer.parseInt(Edit_Text_Cuotas.getText().toString()) == 1) {
 
-                            Toast.makeText(getApplicationContext(), "2 cuotas min", Toast.LENGTH_SHORT).show();
-                        }
+                    if (Edit_Text_Cuotas.getText().toString().equals("1")) {
+
+                        Toast.makeText(getApplicationContext(), "Minimo 2 cuotas", Toast.LENGTH_SHORT).show();
                     }
+
                 } else {
 
                     if (Integer.parseInt(quitarFormato(costo_total)) > Integer.parseInt(saldoDisponible)) {
@@ -142,6 +142,7 @@ public class simularCompra extends ActionBarActivity implements DialogoCompra.Co
                         //Edit_Text_Cuotas.addTextChangedListener(this);
 
                     } else {
+
                         Edit_Text_Cuotas.setHintTextColor(getResources().getColor(R.color.Cuota_Valido));
 
                         calcularCuotas(saldoDisponible, adapter1);
@@ -380,7 +381,7 @@ public class simularCompra extends ActionBarActivity implements DialogoCompra.Co
      * Procedimiento que asgina el valor de cada cuota
      *
      * @param saldoDisponible corresponde al valor del saldo disponible para comprar
-     * @param adapter1        adaptador que sera seteado en la ListView
+     * @param adapter1        adaptador que sera seteados en la ListView
      */
     public void calcularCuotas(String saldoDisponible, VivzAdapter adapter1) {
 
@@ -401,23 +402,23 @@ public class simularCompra extends ActionBarActivity implements DialogoCompra.Co
             valorCuota = 0;
 
             colores_valores.add(verificarSaldo(saldoDisponible, valorCuota));
-            nombre_tarjetas.add("LaPolar");
+            nombre_tarjetas.add("Santander");
             valores_cuotas.add(formatear(String.valueOf(valorCuota)));
-            images_valores.add(R.drawable.png_lapolar);
+            images_valores.add(R.drawable.png_santander);
 
             valorCuota = 0;
 
             colores_valores.add(verificarSaldo(saldoDisponible, valorCuota));
-            nombre_tarjetas.add("Ripley");
+            nombre_tarjetas.add("BCI");
             valores_cuotas.add(formatear(String.valueOf(valorCuota)));
-            images_valores.add(R.drawable.png_ripley);
+            images_valores.add(R.drawable.png_bci);
 
             valorCuota = 0;
 
             colores_valores.add(verificarSaldo(saldoDisponible, valorCuota));
-            nombre_tarjetas.add("BBVA");
+            nombre_tarjetas.add("png_bestado");
             valores_cuotas.add(formatear(String.valueOf(valorCuota)));
-            images_valores.add(R.drawable.png_bbva);
+            images_valores.add(R.drawable.png_bestado);
 
             adapter1 = new VivzAdapter(getApplicationContext(), colores_valores, nombre_tarjetas, valores_cuotas, images_valores);
             ListViewListaTarjetas.setAdapter(adapter1);
@@ -434,33 +435,33 @@ public class simularCompra extends ActionBarActivity implements DialogoCompra.Co
             List<String> valores_cuotas = new ArrayList<String>();
             List<Integer> images_valores = new ArrayList<Integer>();
 
-            double valorCuota = metodoFrances(precioProducto, 0.04, Integer.parseInt(Edit_Text_Cuotas.getText().toString()));
+            double valorCuota = calculoCuota(precioProducto, 0.0277, Integer.parseInt(Edit_Text_Cuotas.getText().toString()));
 
             colores_valores.add(verificarSaldo(saldoDisponible, valorCuota));
             nombre_tarjetas.add("CMR");
             valores_cuotas.add(formatear(String.valueOf(valorCuota)));
             images_valores.add(R.drawable.png_cmr);
 
-            valorCuota = metodoFrances(precioProducto, 0.13, Integer.parseInt(Edit_Text_Cuotas.getText().toString()));
+            valorCuota = calculoCuota(precioProducto, 0.0282, Integer.parseInt(Edit_Text_Cuotas.getText().toString()));
 
             colores_valores.add(verificarSaldo(saldoDisponible, valorCuota));
-            nombre_tarjetas.add("LaPolar");
+            nombre_tarjetas.add("Santander");
             valores_cuotas.add(formatear(String.valueOf(valorCuota)));
-            images_valores.add(R.drawable.png_lapolar);
+            images_valores.add(R.drawable.png_santander);
 
-            valorCuota = metodoFrances(precioProducto, 0.09, Integer.parseInt(Edit_Text_Cuotas.getText().toString()));
+            valorCuota = calculoCuota(precioProducto, 0.0307, Integer.parseInt(Edit_Text_Cuotas.getText().toString()));
 
             colores_valores.add(verificarSaldo(saldoDisponible, valorCuota));
-            nombre_tarjetas.add("Ripley");
+            nombre_tarjetas.add("BCI");
             valores_cuotas.add(formatear(String.valueOf(valorCuota)));
-            images_valores.add(R.drawable.png_ripley);
+            images_valores.add(R.drawable.png_bci);
 
-            valorCuota = metodoFrances(precioProducto, 0.20, Integer.parseInt(Edit_Text_Cuotas.getText().toString()));
+            valorCuota = calculoCuota(precioProducto, 0.0298, Integer.parseInt(Edit_Text_Cuotas.getText().toString()));
 
             colores_valores.add(verificarSaldo(saldoDisponible, valorCuota));
-            nombre_tarjetas.add("BBVA");
+            nombre_tarjetas.add("B Estado");
             valores_cuotas.add(formatear(String.valueOf(valorCuota)));
-            images_valores.add(R.drawable.png_bbva);
+            images_valores.add(R.drawable.png_bestado);
 
             adapter1 = new VivzAdapter(getApplicationContext(), colores_valores, nombre_tarjetas, valores_cuotas, images_valores);
             ListViewListaTarjetas.setAdapter(adapter1);
@@ -475,7 +476,7 @@ public class simularCompra extends ActionBarActivity implements DialogoCompra.Co
      * @param numeroCuotas        numero de cuotas en que se comprara el producto (int)
      * @return Retorna el valor de la cuota mensual que se debe pagar
      */
-    public double metodoFrances(EditText valorPrecioProducto, double tasaInteres, int numeroCuotas) {
+    public double calculoCuota(EditText valorPrecioProducto, double tasaInteres, int numeroCuotas) {
 
         if (valorPrecioProducto.getText().toString().equals("")) {
 
@@ -497,6 +498,9 @@ public class simularCompra extends ActionBarActivity implements DialogoCompra.Co
             } else {
 
                 double valorCuota = Integer.parseInt(quitarFormato(valorPrecioProducto.getText().toString())) * ((tasaInteres * Math.pow(1 + tasaInteres, numeroCuotas)) / (Math.pow(1 + tasaInteres, numeroCuotas) - 1));
+
+                valorCuota = Integer.parseInt(quitarFormato(valorPrecioProducto.getText().toString())) * (tasaInteres * Math.pow(1 + tasaInteres, numeroCuotas)) / (Math.pow(1 + tasaInteres, numeroCuotas) - 1);
+
                 precioProducto.setHintTextColor(getResources().getColor(R.color.Precio_Valido));
                 return valorCuota;
             }
@@ -640,7 +644,7 @@ class VivzAdapter extends BaseAdapter {
         Resources res = c.getResources();
         String[] titulos_tarjetas = res.getStringArray(R.array.titulos_tarjetas);
         String[] valor_cuotas = res.getStringArray(R.array.valor_cuotas_iniciales);
-        int[] images = {R.drawable.png_cmr, R.drawable.png_lapolar, R.drawable.png_ripley, R.drawable.png_bbva};
+        int[] images = {R.drawable.png_cmr, R.drawable.png_santander, R.drawable.png_bci, R.drawable.png_bestado};
         int[] color = {c.getResources().getColor(R.color.Color_Texto), c.getResources().getColor(R.color.Color_Texto), c.getResources().getColor(R.color.Color_Texto), c.getResources().getColor(R.color.Color_Texto)};
 
         for (int i = 0; i < 4; i++) {
