@@ -469,7 +469,7 @@ public class simularCompra extends ActionBarActivity implements DialogoCompra.Co
     }
 
     /**
-     * Funcion de prueba para mostrar ejemplo de funcionamiento del calculo del valor de la cuota haciendo uso del metodo Frances
+     * Funcion de que calcula el valor de la cuota de acuerdo al interes asociado a la tarjta
      *
      * @param valorPrecioProducto Valor del producto (EditText)
      * @param tasaInteres         tasa de interes de la tarjeta (double, por ahora se entrega como decimal)
@@ -497,9 +497,7 @@ public class simularCompra extends ActionBarActivity implements DialogoCompra.Co
 
             } else {
 
-                double valorCuota = Integer.parseInt(quitarFormato(valorPrecioProducto.getText().toString())) * ((tasaInteres * Math.pow(1 + tasaInteres, numeroCuotas)) / (Math.pow(1 + tasaInteres, numeroCuotas) - 1));
-
-                valorCuota = Integer.parseInt(quitarFormato(valorPrecioProducto.getText().toString())) * (tasaInteres * Math.pow(1 + tasaInteres, numeroCuotas)) / (Math.pow(1 + tasaInteres, numeroCuotas) - 1);
+                double valorCuota = valorCuota = Integer.parseInt(quitarFormato(valorPrecioProducto.getText().toString())) * (tasaInteres * Math.pow(1 + tasaInteres, numeroCuotas)) / (Math.pow(1 + tasaInteres, numeroCuotas) - 1);
 
                 precioProducto.setHintTextColor(getResources().getColor(R.color.Precio_Valido));
                 return valorCuota;
