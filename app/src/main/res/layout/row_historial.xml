@@ -15,8 +15,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/ImageViewFotoHistorial"
-        android:layout_alignTop="@+id/ImageViewFotoHistorial"
+        android:layout_marginRight="@dimen/margin_left_right_top_bottom"
         android:layout_toRightOf="@+id/ImageViewFotoHistorial"
+        android:layout_alignParentRight="true"
         android:text="Nombre compra"
         android:textColor="@color/Color_Texto"
         android:textSize="18sp" />
@@ -26,9 +27,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
-        android:layout_alignTop="@+id/TextViewHistorialNombre"
+        android:layout_alignTop="@+id/ImageViewFotoHistorial"
         android:layout_marginRight="@dimen/margin_left_right_top_bottom"
-        android:layout_toRightOf="@+id/TextViewHistorialNombre"
+
         android:gravity="right"
         android:text="10/09/15"
         android:textColor="@color/Color_Texto_Hint"

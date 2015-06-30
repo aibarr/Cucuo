@@ -39,7 +39,7 @@ public class DialogoCompra extends DialogFragment implements View.OnClickListene
         ButtonCancelarCompra = (Button) view.findViewById(R.id.ButtonCancelarCompra);
         EditTextNombreCompra = (EditText) view.findViewById(R.id.EditTextNombreCompra);
         TextViewMaxCaracteres = (TextView) view.findViewById(R.id.TextViewMaxCaracteres);
-        maxCaracteres = 10;
+        maxCaracteres = 12;
 
         ButtonAceptarComprar.setOnClickListener(new View.OnClickListener() {
             @Override
