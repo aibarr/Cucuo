@@ -3,7 +3,7 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_simular_compra">Simular Compra</string>
-    <string name="saldo_disponible">Saldo diponible</string>
+    <string name="saldo_disponible">Saldo disponible</string>
     <string name="agregar_saldo">Agregar saldo</string>
     <string name="restar_saldo">Restar saldo</string>
     <string name="boton_agregar">Agregar</string>
